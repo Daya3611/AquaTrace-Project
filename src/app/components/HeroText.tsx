@@ -20,7 +20,7 @@ function HeroText() {
       <div className='max-w-4xl mx-auto px-6 py-12'>
         <div className='bg-white shadow-md rounded-lg p-8'>
           <h1 className='text-3xl md:text-4xl font-semibold text-gray-900 mb-6'>
-            Fair & Smart Use of the World's Fresh Water
+            Fair & Smart Use of the Worlds Fresh Water
           </h1>
           <p className='text-base text-gray-700 mb-6'>
             We are a network of partner organizations, water footprint professionals, and donors who support our mission. As a non-profit organization, we rely on the support of donors and contributors to continue our work. Your involvement is vital to our success.
