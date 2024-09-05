@@ -15,9 +15,13 @@ const img = [
 
 function Hero() {
   return (
-    <div className='relative tems-center text-center  rounded-xl '>
-        <Carousel className=' text-center items-center mx-auto px-1 max-w-[90%] mt-1 rounded-xl border border-red-600'>
-            <CarouselContent className='w-full rounded-xl border border-blue-600'>
+      <div className='relative tems-center text-center  rounded-xl '>
+      <div>
+        <h1 className='text-3xl'>Fair & smart use of the world's fresh water</h1>
+      </div>
+      <div>
+      <Carousel className=' text-center items-center mx-auto px-1 max-w-[90%] mt-1 rounded-xl'>
+            <CarouselContent className='w-full rounded-xl border '>
                 {img.map((item, index) => (
                 <CarouselItem key={index} className='flex justify-center items-center'>
                     <img 
@@ -31,8 +35,12 @@ function Hero() {
                 {/* <CarouselPrevious className='absolute top-1/2 left-6 transform -translate-y-1/2' />
                 <CarouselNext className='absolute top-1/2 right-9 transform -translate-y-1/2' /> */}
         </Carousel>
+      </div>
+        
 
     </div>
+   
+    
   );
 }
 
