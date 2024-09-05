@@ -6,6 +6,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from '@/components/ui/button';
+import { Herr_Von_Muellerhoff } from 'next/font/google';
+import HeroText from './HeroText';
 
 const img = [
   { src: './img/p1.jpg' },
@@ -16,10 +19,8 @@ const img = [
 function Hero() {
   return (
       <div className='relative tems-center text-center  rounded-xl '>
-      <div>
-        <h1 className='text-3xl'>Fair & smart use of the world's fresh water</h1>
-      </div>
-      <div>
+        <HeroText />
+      <div className='mt-4'>
       <Carousel className=' text-center items-center mx-auto px-1 max-w-[90%] mt-1 rounded-xl'>
             <CarouselContent className='w-full rounded-xl border '>
                 {img.map((item, index) => (
