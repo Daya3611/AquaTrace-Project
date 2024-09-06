@@ -29,7 +29,7 @@ const chartConfig = {
 function Graph() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-4 px-4">
-  <div className="flex flex-col  p-4 bg-white rounded-lg shadow-md">
+  <div className="flex flex-col  p-4 bg-white lg:rounded-l-[55px] rounded-t-[55px] shadow-md">
     <h2 className="text-3xl font-semibold text-slate-900 mb-2 border-b-4 border-teal-500 pb-2 mt-2">Water Usage Report</h2>
     <p className="text-base text-slate-600 mt-3">Monthly Average Report</p>
     <p className="grid grid-cols-1">
@@ -51,11 +51,11 @@ function Graph() {
         
     </p>
   </div>
-  <div className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md">
+  <div className="flex items-center justify-center p-4 bg-white lg:rounded-r-[55px] rounded-b-[55px]  shadow-md">
   <div className="relative w-full">
     <ChartContainer 
       config={chartConfig} 
-      className="min-h-[200px] w-full bg-slate-200 rounded-lg shadow-inner p-4"
+      className="min-h-[200px] w-full bg-slate-200 rounded-lg lg:rounded-tr-[55px]  lg:rounded-br-[45px] rounded-b-[35px]    shadow-inner p-4"
     >
       <BarChart accessibilityLayer data={chartData}>
         <Bar dataKey="WaterUse" fill="var(--color-WaterUse)" radius={4} />
@@ -63,7 +63,7 @@ function Graph() {
       </BarChart>
     </ChartContainer>
 
-    <div className="absolute bottom-0 left-0 right-0 flex justify-between px-4 py-2 bg-white rounded-b-lg shadow-md">
+    <div className="absolute bottom-0 left-0 right-0 flex justify-between px-4 py-2 bg-white rounded-b-[35px] lg:rounded-br-[55px]  shadow-md">
       {chartData.map((entry, index) => (
         <p key={index} className="text-xs text-slate-600 text-center flex-1">
           {entry.month}
