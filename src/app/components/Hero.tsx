@@ -28,7 +28,7 @@ function Hero() {
                         <img 
                             src={item.src} 
                             alt={`Carousel Image ${index + 1}`} 
-                            className='w-full max-h-[550px] object-cover rounded-[55px]'
+                            className='w-full max-h-[550px] object-fill rounded-[55px]'
                         />
                     </CarouselItem>
                 ))}

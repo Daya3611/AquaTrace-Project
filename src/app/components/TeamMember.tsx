@@ -46,12 +46,11 @@ function TeamMember() {
   return (
     <div className='px-7 py-3'>
   <div className='bg-white p-6 rounded-[55px] shadow-xl pb-9'>
-    <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold border-b-4 border-teal-500 pb-2 mb-4 mt-4 lg:mb-6'>
-      Team Members
-    </h1>
+    
 
+    <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold border-b-4 border-teal-500 pb-2 mb-4 mt-4 lg:mb-6'>Mentor</h1>
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 px-4'>
-      {members.map((member, index) => (
+      {mentor.map((member, index) => (
         <div key={index} className='bg-white rounded-[35px] shadow-xl hover:shadow-teal-200 hover:transform hover:-translate-y-1 transition-transform duration-300'>
           <img 
             src={member.img} 
@@ -66,9 +65,12 @@ function TeamMember() {
       ))}
     </div>
 
-    <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold border-b-4 border-teal-500 pb-2 mb-4 mt-9 lg:mb-6'>Mentor</h1>
+    <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold border-b-4 border-teal-500 pb-2 mb-4 mt-9 lg:mb-6'>
+      Team Members
+    </h1>
+
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 px-4'>
-      {mentor.map((member, index) => (
+      {members.map((member, index) => (
         <div key={index} className='bg-white rounded-[35px] shadow-xl hover:shadow-teal-200 hover:transform hover:-translate-y-1 transition-transform duration-300'>
           <img 
             src={member.img} 
