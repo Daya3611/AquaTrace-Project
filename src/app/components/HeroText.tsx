@@ -6,7 +6,7 @@ import { toast } from "sonner"
 
 
 function Showmssg() {
-    toast("Sabar Rakh BSDK , abhi pura nhi hua hai");
+    toast("not develop yet");
 
 }
 function Showmssg1() {
@@ -39,7 +39,7 @@ function HeroText() {
               Calculate Your Water Footprint
             </button>
             <button 
-              className='bg-orange-500 text-white hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-gray-400 px-4 py-2 rounded-3xl' onClick={Showmssg1} 
+              className='bg-orange-500 text-white hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-gray-400 px-4 py-2 rounded-3xl' onClick={Showmssg} 
             >
               What is a Water Footprint?
             </button>
