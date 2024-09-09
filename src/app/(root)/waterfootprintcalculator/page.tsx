@@ -187,7 +187,7 @@ const Page = () => {
               <label className='block text-gray-700'>Variety of Crop:</label>
               <select name='cropVariety' value={formData.cropVariety} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded'>
                 <option value=''>Select Crop Variety</option>
-                {formData.cropType && cropVarieties[formData.cropType]?.map(variety => (
+                {formData.cropType && (cropVarieties as Record<string, string[]>)[formData.cropType]?.map(variety => (
                   <option key={variety} value={variety}>{variety}</option>
                 ))}
               </select>
