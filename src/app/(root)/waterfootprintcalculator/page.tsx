@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Bar, BarChart, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
@@ -10,12 +11,12 @@ const convertWater = (cubicMeters: number) => {
     gallons: cubicMeters * 264.172,
   };
 };
+
 // Define the type for chart data
 type ChartData = {
   month: string;
   WaterUse: number;
 };
-
 
 // Define the type for results data
 type Results = {
@@ -24,9 +25,46 @@ type Results = {
   waterFootprint: string;
 };
 
+// Define the type for form data
+type FormData = {
+  farmerName: string;
+  farmName: string;
+  location: string;
+  date: string;
+  contactInfo: string;
+  cropType: string;
+  cropVariety: string;
+  plantingDate: string;
+  harvestDate: string;
+  cropArea: number; // in hectares
+  cropYield: number; // tons per hectare
+  greenWater: number; // mm
+  blueWater: number; // mm
+  greyWater: number; // if applicable
+  rainfall: number; // mm
+  irrigation: number; // cubic meters
+  otherSources: number; // cubic meters
+  irrigationType: string;
+  irrigationEfficiency: number; // percentage
+  irrigationSchedule: string;
+  soilType: string;
+  soilMoisture: number; // percentage
+  climateData: {
+    temperature: number; // average temperature in °C
+    humidity: number; // average humidity in %
+    precipitation: number; // average precipitation in mm
+  };
+  fertilizers: string;
+  pesticides: string;
+  waterConservation: string;
+  waterCost: number; // if applicable
+  environmentalImpact: string;
+  observations: string;
+  suggestions: string;
+};
 
 const Page = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     farmerName: '',
     farmName: '',
     location: '',
@@ -36,40 +74,39 @@ const Page = () => {
     cropVariety: '',
     plantingDate: '',
     harvestDate: '',
-    cropArea: 0,  // in hectares
-    cropYield: 0,  // tons per hectare
-    greenWater: 0,  // mm
-    blueWater: 0,  // mm
-    greyWater: 0,  // if applicable
-    rainfall: 0,  // mm
-    irrigation: 0,  // cubic meters
-    otherSources: 0,  // cubic meters
+    cropArea: 0,
+    cropYield: 0,
+    greenWater: 0,
+    blueWater: 0,
+    greyWater: 0,
+    rainfall: 0,
+    irrigation: 0,
+    otherSources: 0,
     irrigationType: '',
-    irrigationEfficiency: 0,  // percentage
+    irrigationEfficiency: 0,
     irrigationSchedule: '',
     soilType: '',
-    soilMoisture: 0,  // percentage
+    soilMoisture: 0,
     climateData: {
-      temperature: 0,  // average temperature in °C
-      humidity: 0,  // average humidity in %
-      precipitation: 0,  // average precipitation in mm
+      temperature: 0,
+      humidity: 0,
+      precipitation: 0,
     },
     fertilizers: '',
     pesticides: '',
     waterConservation: '',
-    waterCost: 0,  // if applicable
+    waterCost: 0,
     environmentalImpact: '',
     observations: '',
     suggestions: '',
   });
-  
+
   const [results, setResults] = useState<Results | null>(null);
   const [chartData, setChartData] = useState<ChartData[]>([]);
 
-
   // Sample data
   const cropTypes = ["Wheat", "Rice", "Corn", "Barley", "Sugarcane"];
-  const cropVarieties = {
+  const cropVarieties: Record<string, string[]> = {
     "Wheat": ["Hard Red Winter", "Soft Red Winter", "Durum"],
     "Rice": ["Basmati", "Sona Masuri", "Jasmine"],
     "Corn": ["Dent", "Flint", "Popcorn"],
@@ -80,17 +117,14 @@ const Page = () => {
   const irrigationSchedules = ["Daily", "Weekly", "Bi-weekly", "Monthly"];
   const soilTypes = ["Loamy", "Clay", "Sandy", "Saline"];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-  
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
-  
-  
-  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -173,10 +207,9 @@ const Page = () => {
               <label className='block text-gray-700'>Variety of Crop:</label>
               <select name='cropVariety' value={formData.cropVariety} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded'>
                 <option value=''>Select Crop Variety</option>
-                {formData.cropType && cropVarieties[formData.cropType as keyof typeof cropVarieties]?.map(variety => (
+                {formData.cropType && cropVarieties[formData.cropType]?.map(variety => (
                   <option key={variety} value={variety}>{variety}</option>
                 ))}
-
               </select>
             </div>
             <div>
@@ -197,9 +230,9 @@ const Page = () => {
             </div>
           </fieldset>
 
-          {/* Water Use Information */}
+          {/* Water Information */}
           <fieldset className='border p-4 rounded'>
-            <legend className='font-semibold'>Water Use Information</legend>
+            <legend className='font-semibold'>Water Information</legend>
             <div>
               <label className='block text-gray-700'>Green Water (mm):</label>
               <input type='number' name='greenWater' value={formData.greenWater} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
@@ -209,28 +242,23 @@ const Page = () => {
               <input type='number' name='blueWater' value={formData.blueWater} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
-              <label className='block text-gray-700'>Grey Water (if applicable):</label>
+              <label className='block text-gray-700'>Grey Water (if applicable, mm):</label>
               <input type='number' name='greyWater' value={formData.greyWater} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
-              <label className='block text-gray-700'>Total Rainfall (mm):</label>
+              <label className='block text-gray-700'>Rainfall (mm):</label>
               <input type='number' name='rainfall' value={formData.rainfall} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
-              <label className='block text-gray-700'>Total Irrigation (cubic meters):</label>
+              <label className='block text-gray-700'>Irrigation (cubic meters):</label>
               <input type='number' name='irrigation' value={formData.irrigation} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
-              <label className='block text-gray-700'>Other Sources of Water (cubic meters):</label>
+              <label className='block text-gray-700'>Other Sources (cubic meters):</label>
               <input type='number' name='otherSources' value={formData.otherSources} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
-          </fieldset>
-
-          {/* Irrigation Details */}
-          <fieldset className='border p-4 rounded'>
-            <legend className='font-semibold'>Irrigation Details</legend>
             <div>
-              <label className='block text-gray-700'>Type of Irrigation System:</label>
+              <label className='block text-gray-700'>Irrigation Type:</label>
               <select name='irrigationType' value={formData.irrigationType} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded'>
                 <option value=''>Select Irrigation Type</option>
                 {irrigationTypes.map(type => (
@@ -266,97 +294,80 @@ const Page = () => {
               </select>
             </div>
             <div>
-              <label className='block text-gray-700'>Soil Moisture Content (%):</label>
+              <label className='block text-gray-700'>Soil Moisture (%):</label>
               <input type='number' name='soilMoisture' value={formData.soilMoisture} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
-              <label className='block text-gray-700'>Average Temperature (°C):</label>
-              <input type='number' name='climateData.temperature' value={formData.climateData.temperature} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
-
-            </div>
-            <div>
-              <label className='block text-gray-700'>Average Humidity (%):</label>
-              <input type='number' name='climateData.humidity' value={formData.climateData.humidity} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
-            </div>
-            <div>
-              <label className='block text-gray-700'>Average Precipitation (mm):</label>
-              <input type='number' name='climateData.precipitation' value={formData.climateData.precipitation} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
+              <label className='block text-gray-700'>Climate Data:</label>
+              <div>
+                <label className='block text-gray-700'>Temperature (°C):</label>
+                <input type='number' name='climateData.temperature' value={formData.climateData.temperature} onChange={(e) => handleChange(e as React.ChangeEvent<HTMLInputElement>)} className='w-full p-2 border border-gray-300 rounded' />
+              </div>
+              <div>
+                <label className='block text-gray-700'>Humidity (%):</label>
+                <input type='number' name='climateData.humidity' value={formData.climateData.humidity} onChange={(e) => handleChange(e as React.ChangeEvent<HTMLInputElement>)} className='w-full p-2 border border-gray-300 rounded' />
+              </div>
+              <div>
+                <label className='block text-gray-700'>Precipitation (mm):</label>
+                <input type='number' name='climateData.precipitation' value={formData.climateData.precipitation} onChange={(e) => handleChange(e as React.ChangeEvent<HTMLInputElement>)} className='w-full p-2 border border-gray-300 rounded' />
+              </div>
             </div>
           </fieldset>
 
-          {/* Fertilizer and Pesticide Use */}
+          {/* Additional Information */}
           <fieldset className='border p-4 rounded'>
-            <legend className='font-semibold'>Fertilizer and Pesticide Use</legend>
+            <legend className='font-semibold'>Additional Information</legend>
             <div>
               <label className='block text-gray-700'>Fertilizers Used:</label>
-              <textarea name='fertilizers' value={formData.fertilizers} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows='3'></textarea>
+              <textarea name='fertilizers' value={formData.fertilizers} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
             </div>
             <div>
               <label className='block text-gray-700'>Pesticides Used:</label>
-              <textarea name='pesticides' value={formData.pesticides} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows='3'></textarea>
+              <textarea name='pesticides' value={formData.pesticides} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
             </div>
-          </fieldset>
-
-          {/* Water Management Practices */}
-          <fieldset className='border p-4 rounded'>
-            <legend className='font-semibold'>Water Management Practices</legend>
             <div>
-              <label className='block text-gray-700'>Water Conservation Practices:</label>
-              <textarea name='waterConservation' value={formData.waterConservation} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows='3'></textarea>
+              <label className='block text-gray-700'>Water Conservation Measures:</label>
+              <textarea name='waterConservation' value={formData.waterConservation} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
             </div>
-          </fieldset>
-
-          {/* Economic and Environmental Impact */}
-          <fieldset className='border p-4 rounded'>
-            <legend className='font-semibold'>Economic and Environmental Impact</legend>
             <div>
-              <label className='block text-gray-700'>Cost of Water (if applicable):</label>
+              <label className='block text-gray-700'>Water Cost (if applicable):</label>
               <input type='number' name='waterCost' value={formData.waterCost} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
               <label className='block text-gray-700'>Environmental Impact:</label>
-              <textarea name='environmentalImpact' value={formData.environmentalImpact} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows='3'></textarea>
+              <textarea name='environmentalImpact' value={formData.environmentalImpact} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
+            </div>
+            <div>
+              <label className='block text-gray-700'>Observations:</label>
+              <textarea name='observations' value={formData.observations} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
+            </div>
+            <div>
+              <label className='block text-gray-700'>Suggestions:</label>
+              <textarea name='suggestions' value={formData.suggestions} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
             </div>
           </fieldset>
 
-          {/* Additional Comments */}
-          <fieldset className='border p-4 rounded'>
-            <legend className='font-semibold'>Additional Comments</legend>
-            <div>
-              <label className='block text-gray-700'>Observations and Challenges:</label>
-              <textarea name='observations' value={formData.observations} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows='3'></textarea>
-            </div>
-            <div>
-              <label className='block text-gray-700'>Suggestions for Improvement:</label>
-              <textarea name='suggestions' value={formData.suggestions} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows='3'></textarea>
-            </div>
-          </fieldset>
-
-          <Button type='submit' className='bg-blue-600 text-white rounded-full py-2 px-4'>
-            Calculate
-          </Button>
+          <Button type='submit' className='mt-4'>Submit</Button>
         </form>
 
         {results && (
-          <div className='mt-8'>
-            <h3 className='text-xl font-semibold mb-4'>Results</h3>
-            <p>Total Water Use: {results.totalWaterUseLiters} liters ({results.totalWaterUseGallons} gallons)</p>
+          <div className='mt-6'>
+            <h3 className='text-xl font-bold mb-4'>Results</h3>
+            <p>Total Water Use: {results.totalWaterUseLiters} Liters ({results.totalWaterUseGallons} Gallons)</p>
             <p>Water Footprint: {results.waterFootprint} m³/ton</p>
           </div>
         )}
 
-        {chartData.length > 0 && (
-          <div className='mt-8'>
-            <h3 className='text-xl font-semibold mb-4'>Water Use Chart</h3>
-            <BarChart width={600} height={300} data={chartData}>
-              <CartesianGrid strokeDasharray='3 3' />
-              <XAxis dataKey='month' />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey='WaterUse' fill='#8884d8' />
-            </BarChart>
-          </div>
-        )}
+        <div className='mt-6'>
+          <h3 className='text-xl font-bold mb-4'>Seasonal Water Use</h3>
+          <BarChart width={600} height={300} data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="WaterUse" fill="#8884d8" />
+          </BarChart>
+        </div>
       </div>
     </div>
   );
