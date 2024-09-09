@@ -10,6 +10,20 @@ const convertWater = (cubicMeters: number) => {
     gallons: cubicMeters * 264.172,
   };
 };
+// Define the type for chart data
+type ChartData = {
+  month: string;
+  WaterUse: number;
+};
+
+
+// Define the type for results data
+type Results = {
+  totalWaterUseLiters: string;
+  totalWaterUseGallons: string;
+  waterFootprint: string;
+};
+
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -48,9 +62,10 @@ const Page = () => {
     observations: '',
     suggestions: '',
   });
+  
+  const [results, setResults] = useState<Results | null>(null);
+  const [chartData, setChartData] = useState<ChartData[]>([]);
 
-  const [results, setResults] = useState(null);
-  const [chartData, setChartData] = useState([]);
 
   // Sample data
   const cropTypes = ["Wheat", "Rice", "Corn", "Barley", "Sugarcane"];
@@ -67,13 +82,14 @@ const Page = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-  
-    // Handle date fields separately, since they are strings in the format YYYY-MM-DD
+    
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: isNaN(Number(value)) ? value : Number(value),  // Convert to number if possible
     }));
   };
+  
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -254,6 +270,7 @@ const Page = () => {
             <div>
               <label className='block text-gray-700'>Average Temperature (°C):</label>
               <input type='number' name='climateData.temperature' value={formData.climateData.temperature} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
+
             </div>
             <div>
               <label className='block text-gray-700'>Average Humidity (%):</label>
