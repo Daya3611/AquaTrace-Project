@@ -65,27 +65,14 @@ const Page = () => {
   const irrigationSchedules = ["Daily", "Weekly", "Bi-weekly", "Monthly"];
   const soilTypes = ["Loamy", "Clay", "Sandy", "Saline"];
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
+  
     // Handle date fields separately, since they are strings in the format YYYY-MM-DD
-    if (name === 'date' || name === 'plantingDate' || name === 'harvestDate') {
-      setFormData({ ...formData, [name]: value });
-    } 
-    // Handle climate data separately (numbers)
-    else if (name.startsWith('climateData.')) {
-      setFormData({
-        ...formData,
-        climateData: {
-          ...formData.climateData,
-          [name.split('.')[1]]: parseFloat(value),
-        },
-      });
-    } 
-    // Handle all other fields
-    else {
-      setFormData({ ...formData, [name]: parseFloat(value) || value });
-    }
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
