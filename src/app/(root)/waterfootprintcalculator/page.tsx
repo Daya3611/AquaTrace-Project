@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import { Button } from '@/components/ui/button'; // Adjust the import according to your file structure
@@ -118,7 +119,7 @@ const Page = () => {
   };
 
   return (
-    <div className='container mx-auto p-4'>
+    <div className='container mx-auto mt-[55px] p-4'>
       <div className='max-w-4xl mx-auto'>
         <h1 className='text-2xl font-bold mb-6'>Crop Water Use Calculator</h1>
         <form onSubmit={handleSubmit}>
