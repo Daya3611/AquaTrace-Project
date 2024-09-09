@@ -116,15 +116,28 @@ const Page = () => {
   const irrigationTypes = ["Drip", "Sprinkler", "Surface", "Subsurface"];
   const irrigationSchedules = ["Daily", "Weekly", "Bi-weekly", "Monthly"];
   const soilTypes = ["Loamy", "Clay", "Sandy", "Saline"];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
+// Error handling nested state updates for climateData
+const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const { name, value, type, checked } = e.target;
+  
+  // Handling nested state update for climateData
+  if (name.startsWith('climateData.')) {
+    const key = name.split('.')[1];
+    setFormData(prev => ({
+      ...prev,
+      climateData: {
+        ...prev.climateData,
+        [key]: type === 'number' ? parseFloat(value) : value,
+      },
     }));
-  };
+  } else {
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'number' ? parseFloat(value) : type === 'checkbox' ? checked : value,
+    }));
+  }
+};
+
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
