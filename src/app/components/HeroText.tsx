@@ -26,22 +26,22 @@ function HeroText() {
         />
       </div> */}
       <div className='relative z-10 max-w-6xl mx-auto px-6 py-12'>
-        <div className='bg-transparent  rounded-lg p-8'>
-          <h1 className='text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-6'>
-            Join Us in the <span className='bg-blue-500 text-white rounded-full px-3 py-1'>fight</span> for the Environment
+        <div className='bg-transparent rounded-lg p-8'>
+          <h1 className='text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-6 animate-fadeIn'>
+            Join Us in the <span className='bg-blue-600 text-white rounded-full px-3 py-1 animate-pulse'>fight</span> for the Environment
           </h1>
-          <p className='text-base md:text-lg text-gray-600 mb-8'>
+          <p className='text-base md:text-lg text-gray-600 mb-8 animate-fadeIn animate-delay-200'>
             We are a network of partner organizations, water footprint professionals, and donors supporting our mission. As a non-profit, we rely on your support to continue our work. Your involvement is crucial to our success.
           </p>
           <div className='flex flex-col md:flex-row gap-4 items-center justify-center'>
             <Button 
-              className='bg-blue-600 text-white rounded-full py-3 px-6 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500'
+              className='bg-blue-600 text-white rounded-full py-3 px-6 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 animate-slideIn animate-delay-300'
               onClick={Showmssg}
             >
               Calculate Your Water Footprint
             </Button>
             <Button 
-              className='bg-orange-500 text-white rounded-full py-3 px-6 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500'
+              className='bg-orange-500 text-white rounded-full py-3 px-6 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 animate-slideIn animate-delay-400'
               onClick={Showmssg1}
             >
               What is a Footprint?
