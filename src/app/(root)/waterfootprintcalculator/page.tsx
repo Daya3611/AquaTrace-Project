@@ -132,7 +132,7 @@ const Page = () => {
           <fieldset className='border p-4 rounded'>
             <legend className='font-semibold'>Basic Information</legend>
             <div>
-              <label className='block text-gray-700'>Farmer's Name:</label>
+              <label className='block text-gray-700'>Farmers Name:</label>
               <input type='text' name='farmerName' value={formData.farmerName} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
