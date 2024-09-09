@@ -4,6 +4,7 @@ import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import { Toaster } from "@/components/ui/sonner"
+import Footer from "./components/Footer";
 
 const bricolage_grotesque = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -26,8 +27,9 @@ export default function RootLayout({
     <html lang="en">
       
       <body className={bricolage_grotesque.className}>
-      
+      <Header />
         {children}
+        <Footer />
         <Toaster />
         </body>
     </html>

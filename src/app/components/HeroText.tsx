@@ -4,9 +4,12 @@ import { Button } from '@/components/ui/button';
 import { toast } from "sonner";
 import Image from 'next/image';
 
-function Showmssg() {
-    toast("Feature not developed yet");
+function toWFC() {
+    if (typeof window !== 'undefined') {
+      window.location.href = "/waterfootprintcalculator";
+    }
 }
+
 
 function Showmssg1() {
     toast("Please contact us for more details");
@@ -36,7 +39,7 @@ function HeroText() {
           <div className='flex flex-col md:flex-row gap-4 items-center justify-center'>
             <Button 
               className='bg-blue-600 text-white rounded-full py-3 px-6 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 animate-slideIn animate-delay-300'
-              onClick={Showmssg}
+              onClick={toWFC}
             >
               Calculate Your Water Footprint
             </Button>
