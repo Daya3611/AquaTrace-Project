@@ -80,14 +80,15 @@ const Page = () => {
   const irrigationSchedules = ["Daily", "Weekly", "Bi-weekly", "Monthly"];
   const soilTypes = ["Loamy", "Clay", "Sandy", "Saline"];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    
+  
     setFormData((prevData) => ({
       ...prevData,
-      [name]: isNaN(Number(value)) ? value : Number(value),  // Convert to number if possible
+      [name]: value,
     }));
   };
+  
   
   
 
