@@ -86,8 +86,9 @@ const Page = () => {
   const soilTypes = ["Loamy", "Clay", "Sandy", "Saline"];
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type, checked } = e.target;
-    
+    const { name, value, type } = e.target;
+    const isChecked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : false;
+  
     if (name.startsWith('climateData.')) {
       const key = name.split('.')[1];
       setFormData(prev => ({
@@ -100,7 +101,7 @@ const Page = () => {
     } else {
       setFormData(prev => ({
         ...prev,
-        [name]: type === 'number' ? parseFloat(value) : type === 'checkbox' ? checked : value,
+        [name]: type === 'number' ? parseFloat(value) : type === 'checkbox' ? isChecked : value,
       }));
     }
   };
