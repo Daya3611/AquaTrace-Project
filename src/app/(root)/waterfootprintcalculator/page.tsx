@@ -1,148 +1,199 @@
 "use client";
-import React, { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-import { Button } from '@/components/ui/button'; // Adjust the import according to your file structure
-
-type FormData = {
-  cropType: string;
-  cropVariety: string;
-  harvestDate: string;
-  cropArea: number;
-  cropYield: number;
-  greenWater: number;
-  blueWater: number;
-  greyWater: number;
-  rainfall: number;
-  irrigation: number;
-  otherSources: number;
-  irrigationType: string;
-  irrigationEfficiency: number;
-  irrigationSchedule: string;
-  soilType: string;
-  soilMoisture: number;
-  climateData: {
-    temperature: string;
-    humidity: string;
-    precipitation: string;
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { Button } from '@/components/ui/button';
+import { Bar, BarChart, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { toast } from "sonner";
+// Helper function to convert cubic meters to liters and gallons
+const convertWater = (cubicMeters: number) => {
+  return {
+    liters: cubicMeters * 1000,
+    gallons: cubicMeters * 264.172,
   };
-  fertilizers: string;
-  pesticides: string;
-  waterConservation: string;
-  waterCost: number;
-  environmentalImpact: string;
-  observations: string;
-  suggestions: string;
 };
 
-const initialFormData: FormData = {
-  cropType: '',
-  cropVariety: '',
-  harvestDate: '',
-  cropArea: 0,
-  cropYield: 0,
-  greenWater: 0,
-  blueWater: 0,
-  greyWater: 0,
-  rainfall: 0,
-  irrigation: 0,
-  otherSources: 0,
-  irrigationType: '',
-  irrigationEfficiency: 0,
-  irrigationSchedule: '',
-  soilType: '',
-  soilMoisture: 0,
-  climateData: {
-    temperature: '',
-    humidity: '',
-    precipitation: '',
-  },
-  fertilizers: '',
-  pesticides: '',
-  waterConservation: '',
-  waterCost: 0,
-  environmentalImpact: '',
-  observations: '',
-  suggestions: '',
+// Define the type for chart data
+type ChartData = {
+  month: string;
+  WaterUse: number;
 };
 
-const irrigationTypes = ['Drip', 'Sprinkler', 'Surface'];
-const irrigationSchedules = ['Daily', 'Weekly', 'Monthly'];
-const soilTypes = ['Clay', 'Silt', 'Sand', 'Loam'];
+// Define the type for results data
+type Results = {
+  totalWaterUseLiters: string;
+  totalWaterUseGallons: string;
+  waterFootprint: string;
+};
+
+// Define the type for climate data
+type ClimateData = {
+  temperature: number;
+  humidity: number;
+  precipitation: number;
+};
 
 const Page = () => {
-  const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [results, setResults] = useState<{ totalWaterUseLiters: number; totalWaterUseGallons: number; waterFootprint: number } | null>(null);
-  const [chartData, setChartData] = useState<{ month: string; WaterUse: number }[]>([]);
+  const [formData, setFormData] = useState({
+    farmerName: '',
+    farmName: '',
+    location: '',
+    date: '',
+    contactInfo: '',
+    cropType: '',
+    cropVariety: '',
+    plantingDate: '',
+    harvestDate: '',
+    cropArea: 0,  // in hectares
+    cropYield: 0,  // tons per hectare
+    greenWater: 0,  // mm
+    blueWater: 0,  // mm
+    greyWater: 0,  // if applicable
+    rainfall: 0,  // mm
+    irrigation: 0,  // cubic meters
+    otherSources: 0,  // cubic meters
+    irrigationType: '',
+    irrigationEfficiency: 0,  // percentage
+    irrigationSchedule: '',
+    soilType: '',
+    soilMoisture: 0,  // percentage
+    climateData: {
+      temperature: 0,  // average temperature in °C
+      humidity: 0,  // average humidity in %
+      precipitation: 0,  // average precipitation in mm
+    },
+    fertilizers: '',
+    pesticides: '',
+    waterConservation: '',
+    waterCost: 0,  // if applicable
+    environmentalImpact: '',
+    observations: '',
+    suggestions: '',
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    if (type === 'number') {
+  const [results, setResults] = useState<Results | null>(null);
+  const [chartData, setChartData] = useState<ChartData[]>([]);
+
+  // Sample data
+  const cropTypes = ["Wheat", "Rice", "Corn", "Barley", "Sugarcane"];
+  const cropVarieties = {
+    "Wheat": ["Hard Red Winter", "Soft Red Winter", "Durum"],
+    "Rice": ["Basmati", "Sona Masuri", "Jasmine"],
+    "Corn": ["Dent", "Flint", "Popcorn"],
+    "Barley": ["Two-row", "Six-row"],
+    "Sugarcane": ["Co 86032", "Co 0238", "Co 1148"]
+  };
+  const irrigationTypes = ["Drip", "Sprinkler", "Surface", "Subsurface"];
+  const irrigationSchedules = ["Daily", "Weekly", "Bi-weekly", "Monthly"];
+  const soilTypes = ["Loamy", "Clay", "Sandy", "Saline"];
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value, type, checked } = e.target;
+    
+    if (name.startsWith('climateData.')) {
+      const key = name.split('.')[1];
       setFormData(prev => ({
         ...prev,
-        [name]: parseFloat(value)
+        climateData: {
+          ...prev.climateData,
+          [key]: type === 'number' ? parseFloat(value) : value,
+        },
       }));
-    } else if (type === 'date' || type === 'text') {
+    } else {
       setFormData(prev => ({
         ...prev,
-        [name]: value
-      }));
-    } else if (type === 'select-one') {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
-      }));
-    } else if (type === 'textarea') {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
+        [name]: type === 'number' ? parseFloat(value) : type === 'checkbox' ? checked : value,
       }));
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Example calculation logic
-    const totalWaterUseLiters = formData.greenWater + formData.blueWater + formData.greyWater;
-    const totalWaterUseGallons = totalWaterUseLiters * 0.264172;
-    const waterFootprint = totalWaterUseLiters / formData.cropYield;
 
+    const { cropArea, cropYield, greenWater, blueWater, greyWater, rainfall, irrigation, otherSources } = formData;
+
+    if (!cropYield || !cropArea || !greenWater || !blueWater) {
+      toast("Please ensure crop yield, area, green water, and blue water are provided.");
+      return;
+    }
+
+    // Calculate total water use in cubic meters
+    const totalWaterUse = ((greenWater + blueWater) / 1000) * cropArea + irrigation + otherSources; // mm to meters
+
+    // Calculate water footprint
+    const totalYield = cropYield * cropArea; // tons
+    const waterFootprint = totalWaterUse / totalYield; // m³/ton
+
+    // Convert cubic meters to liters and gallons
+    const convertedWater = convertWater(totalWaterUse);
+
+    // Set seasonal chart data (summer: Apr-May, monsoon: Jun-Sep, winter: Oct-Jan)
+    const seasonalWaterUse = [0.6, 0.6, 0.8, 1.2, 1.2, 1.2, 1.2, 0.8, 0.6, 0.6, 0.5, 0.5];
+    const newChartData = seasonalWaterUse.map((season, index) => ({
+      month: new Date(0, index).toLocaleString('en-US', { month: 'short' }),
+      WaterUse: (convertedWater.liters / 12) * season,  // Seasonal adjustment
+    }));
+
+    setChartData(newChartData);
     setResults({
-      totalWaterUseLiters,
-      totalWaterUseGallons,
-      waterFootprint
+      totalWaterUseLiters: convertedWater.liters.toFixed(2),
+      totalWaterUseGallons: convertedWater.gallons.toFixed(2),
+      waterFootprint: waterFootprint.toFixed(2),
     });
-
-    setChartData([
-      { month: 'January', WaterUse: totalWaterUseLiters },
-      // Add more data points as needed
-    ]);
   };
 
   return (
-    <div className='container mx-auto mt-[55px] p-4'>
-      <div className='max-w-4xl mx-auto'>
-        <h1 className='text-2xl font-bold mb-6'>Crop Water Use Calculator</h1>
-        <form onSubmit={handleSubmit}>
-          {/* Crop Details */}
-          <fieldset className='border p-4 rounded mb-4'>
-            <legend className='font-semibold'>Crop Details</legend>
+    <div>
+      <div className='max-w-4xl mx-auto mt-[55px] p-6'>
+        <h2 className='text-2xl font-bold mb-4'>Agricultural Water Footprint Calculator</h2>
+        <form onSubmit={handleSubmit} className='space-y-4'>
+          {/* Basic Information */}
+          <fieldset className='border p-4 rounded'>
+            <legend className='font-semibold'>Basic Information</legend>
+            <div>
+              <label className='block text-gray-700'>Farmers Name:</label>
+              <input type='text' name='farmerName' value={formData.farmerName} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
+            </div>
+            <div>
+              <label className='block text-gray-700'>Farm Name:</label>
+              <input type='text' name='farmName' value={formData.farmName} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
+            </div>
+            <div>
+              <label className='block text-gray-700'>Location:</label>
+              <input type='text' name='location' value={formData.location} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
+            </div>
+            <div>
+              <label className='block text-gray-700'>Date:</label>
+              <input type='date' name='date' value={formData.date} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
+            </div>
+            <div>
+              <label className='block text-gray-700'>Contact Information:</label>
+              <input type='text' name='contactInfo' value={formData.contactInfo} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
+            </div>
+          </fieldset>
+
+          {/* Crop Information */}
+          <fieldset className='border p-4 rounded'>
+            <legend className='font-semibold'>Crop Information</legend>
             <div>
               <label className='block text-gray-700'>Crop Type:</label>
               <select name='cropType' value={formData.cropType} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded'>
                 <option value=''>Select Crop Type</option>
-                {/* Add crop types as needed */}
-                <option value='Wheat'>Wheat</option>
-                <option value='Rice'>Rice</option>
+                {cropTypes.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
               </select>
             </div>
             <div>
-              <label className='block text-gray-700'>Crop Variety:</label>
+              <label className='block text-gray-700'>Variety of Crop:</label>
               <select name='cropVariety' value={formData.cropVariety} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded'>
                 <option value=''>Select Crop Variety</option>
-                {/* Add crop varieties based on crop type */}
-                <option value='Variety1'>Variety1</option>
-                <option value='Variety2'>Variety2</option>
+                {formData.cropType && cropVarieties[formData.cropType]?.map(variety => (
+                  <option key={variety} value={variety}>{variety}</option>
+                ))}
               </select>
+            </div>
+            <div>
+              <label className='block text-gray-700'>Planting Date:</label>
+              <input type='date' name='plantingDate' value={formData.plantingDate} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
               <label className='block text-gray-700'>Harvest Date:</label>
@@ -159,7 +210,7 @@ const Page = () => {
           </fieldset>
 
           {/* Water Usage */}
-          <fieldset className='border p-4 rounded mb-4'>
+          <fieldset className='border p-4 rounded'>
             <legend className='font-semibold'>Water Usage</legend>
             <div>
               <label className='block text-gray-700'>Green Water (mm):</label>
@@ -223,33 +274,24 @@ const Page = () => {
           </fieldset>
 
           {/* Climate Data */}
-          <fieldset className='border p-4 rounded mb-4'>
+          <fieldset className='border p-4 rounded'>
             <legend className='font-semibold'>Climate Data</legend>
             <div>
               <label className='block text-gray-700'>Temperature (°C):</label>
-              <input type='text' name='temperature' value={formData.climateData.temperature} onChange={e => setFormData(prev => ({
-                ...prev,
-                climateData: { ...prev.climateData, temperature: e.target.value }
-              }))} className='w-full p-2 border border-gray-300 rounded' />
+              <textarea name='climateData.temperature' value={formData.climateData.temperature} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
             </div>
             <div>
               <label className='block text-gray-700'>Humidity (%):</label>
-              <input type='text' name='humidity' value={formData.climateData.humidity} onChange={e => setFormData(prev => ({
-                ...prev,
-                climateData: { ...prev.climateData, humidity: e.target.value }
-              }))} className='w-full p-2 border border-gray-300 rounded' />
+              <textarea name='climateData.humidity' value={formData.climateData.humidity} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
             </div>
             <div>
               <label className='block text-gray-700'>Precipitation (mm):</label>
-              <input type='text' name='precipitation' value={formData.climateData.precipitation} onChange={e => setFormData(prev => ({
-                ...prev,
-                climateData: { ...prev.climateData, precipitation: e.target.value }
-              }))} className='w-full p-2 border border-gray-300 rounded' />
+              <textarea name='climateData.precipitation' value={formData.climateData.precipitation} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
             </div>
           </fieldset>
 
-          {/* Additional Fields */}
-          <fieldset className='border p-4 rounded mb-4'>
+          {/* Additional Information */}
+          <fieldset className='border p-4 rounded'>
             <legend className='font-semibold'>Additional Information</legend>
             <div>
               <label className='block text-gray-700'>Fertilizers Used:</label>
@@ -264,7 +306,7 @@ const Page = () => {
               <textarea name='waterConservation' value={formData.waterConservation} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
             </div>
             <div>
-              <label className='block text-gray-700'>Water Cost (USD):</label>
+              <label className='block text-gray-700'>Water Cost (if applicable):</label>
               <input type='number' name='waterCost' value={formData.waterCost} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
@@ -281,19 +323,18 @@ const Page = () => {
             </div>
           </fieldset>
 
-          <Button type='submit' className='bg-blue-500 text-white px-4 py-2 rounded'>Calculate</Button>
+          <Button type='submit'>Calculate</Button>
         </form>
 
-        {/* Results and Chart */}
         {results && (
           <div className='mt-8'>
             <h3 className='text-xl font-bold mb-4'>Results</h3>
-            <p>Total Water Use: {results.totalWaterUseLiters.toFixed(2)} liters ({results.totalWaterUseGallons.toFixed(2)} gallons)</p>
-            <p>Water Footprint: {results.waterFootprint.toFixed(2)} liters per ton</p>
+            <p>Total Water Use: {results.totalWaterUseLiters} Liters ({results.totalWaterUseGallons} Gallons)</p>
+            <p>Water Footprint: {results.waterFootprint} m³/ton</p>
           </div>
         )}
 
-        {results && chartData.length > 0 && (
+        {chartData.length > 0 && (
           <div className='mt-8'>
             <h3 className='text-xl font-bold mb-4'>Seasonal Water Use</h3>
             <BarChart width={600} height={300} data={chartData}>
