@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Bar, BarChart, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 
 // Helper function to convert cubic meters to liters and gallons
-const convertWater = (cubicMeters) => {
+const convertWater = (cubicMeters: number) => {
   return {
     liters: cubicMeters * 1000,
     gallons: cubicMeters * 264.172,
