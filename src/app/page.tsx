@@ -9,12 +9,13 @@ export default function Home() {
   return (
     <div className="bg-gradient-to-r from-blue-100 via-green-50 to-orange-100">
       <Header />
-      <div className="mt-[80px]">
+      <div className="mt-[65px]">
       <Hero />
       <Graph />
       <TeamMember />
       </div>
       <Footer />
     </div>
+    
   );
 }

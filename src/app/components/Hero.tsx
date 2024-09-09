@@ -9,11 +9,12 @@ import {
 import { Button } from '@/components/ui/button';
 import { Herr_Von_Muellerhoff } from 'next/font/google';
 import HeroText from './HeroText';
+import Image from 'next/image';
 
 const img = [
-  { src: './img/p1.jpg' },
-  { src: './img/p2.jpg' },
-  { src: './img/p3.jpg' },
+  { src: '/img/p1.jpg' },
+  { src: '/img/p2.jpg' },
+  { src: '/img/p3.jpg' },
 ];
 
 function Hero() {
@@ -25,7 +26,9 @@ function Hero() {
             <CarouselContent className='flex w-full'>
                 {img.map((item, index) => (
                     <CarouselItem key={index} className='flex-shrink-0 w-full'>
-                        <img 
+                        <Image 
+                            width={500}
+                            height={500}
                             src={item.src} 
                             alt={`Carousel Image ${index + 1}`} 
                             className='w-full max-h-[550px] object-fill rounded-[55px]'
