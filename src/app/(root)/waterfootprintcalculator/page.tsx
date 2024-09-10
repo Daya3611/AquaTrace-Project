@@ -117,14 +117,29 @@ const Page = () => {
     }
 
     // Calculate total water use in cubic meters
-    const totalWaterUse = ((greenWater + blueWater) / 1000) * cropArea + irrigation + otherSources; // mm to meters
+    // Ensure values are converted to numbers
+const greenWaterValue = parseFloat(formData.greenWater) || 0;
+const blueWaterValue = parseFloat(formData.blueWater) || 0;
+const cropAreaValue = parseFloat(formData.cropArea) || 0;
+const irrigationValue = parseFloat(formData.irrigation) || 0;
+const otherSourcesValue = parseFloat(formData.otherSources) || 0;
+const cropYieldValue = parseFloat(formData.cropYield) || 0;
 
-    // Calculate water footprint
-    const totalYield = cropYield * cropArea; // tons
-    const waterFootprint = totalWaterUse / totalYield; // m³/ton
+const totalWaterUse = ((greenWaterValue + blueWaterValue) / 1000) * cropAreaValue + irrigationValue + otherSourcesValue; // mm to meters
 
-    // Convert cubic meters to liters and gallons
-    const convertedWater = convertWater(totalWaterUse);
+// Calculate water footprint
+const totalYield = cropYieldValue * cropAreaValue; // tons
+
+if (totalYield === 0) {
+  toast("Please ensure that crop yield and crop area are greater than zero.");
+  return;
+}
+
+const waterFootprint = totalWaterUse / totalYield; // m³/ton
+
+// Convert cubic meters to liters and gallons
+const convertedWater = convertWater(totalWaterUse);
+
 
     // Set seasonal chart data (summer: Apr-May, monsoon: Jun-Sep, winter: Oct-Jan)
     const seasonalWaterUse = [0.6, 0.6, 0.8, 1.2, 1.2, 1.2, 1.2, 0.8, 0.6, 0.6, 0.5, 0.5];
