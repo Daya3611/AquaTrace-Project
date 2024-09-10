@@ -42,28 +42,28 @@ const Page = () => {
     cropVariety: '',
     plantingDate: '',
     harvestDate: '',
-    cropArea: 0,  // in hectares
-    cropYield: 0,  // tons per hectare
-    greenWater: 0,  // mm
-    blueWater: 0,  // mm
-    greyWater: 0,  // if applicable
-    rainfall: 0,  // mm
-    irrigation: 0,  // cubic meters
-    otherSources: 0,  // cubic meters
+    cropArea: '',  // in hectares
+    cropYield: '',  // tons per hectare
+    greenWater: '',  // mm
+    blueWater: '',  // mm
+    greyWater: '',  // if applicable
+    rainfall: '',  // mm
+    irrigation: '',  // cubic meters
+    otherSources: '',  // cubic meters
     irrigationType: '',
-    irrigationEfficiency: 0,  // percentage
+    irrigationEfficiency: '',  // percentage
     irrigationSchedule: '',
     soilType: '',
-    soilMoisture: 0,  // percentage
+    soilMoisture: '',  // percentage
     climateData: {
-      temperature: 0,  // average temperature in °C
-      humidity: 0,  // average humidity in %
-      precipitation: 0,  // average precipitation in mm
+      temperature: '',  // average temperature in °C
+      humidity: '',  // average humidity in %
+      precipitation: '',  // average precipitation in mm
     },
     fertilizers: '',
     pesticides: '',
     waterConservation: '',
-    waterCost: 0,  // if applicable
+    waterCost: '',  // if applicable
     environmentalImpact: '',
     observations: '',
     suggestions: '',
@@ -279,15 +279,15 @@ const Page = () => {
             <legend className='font-semibold'>Climate Data</legend>
             <div>
               <label className='block text-gray-700'>Temperature (°C):</label>
-              <textarea name='climateData.temperature' value={formData.climateData.temperature} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
+              <input name='climateData.temperature' value={formData.climateData.temperature} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' />
             </div>
             <div>
               <label className='block text-gray-700'>Humidity (%):</label>
-              <textarea name='climateData.humidity' value={formData.climateData.humidity} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
+              <input name='climateData.humidity' value={formData.climateData.humidity} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded'/>
             </div>
             <div>
               <label className='block text-gray-700'>Precipitation (mm):</label>
-              <textarea name='climateData.precipitation' value={formData.climateData.precipitation} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded' rows={3}></textarea>
+              <input name='climateData.precipitation' value={formData.climateData.precipitation} onChange={handleChange} className='w-full p-2 border border-gray-300 rounded'/>
             </div>
           </fieldset>
 
