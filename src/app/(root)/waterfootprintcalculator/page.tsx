@@ -142,7 +142,7 @@ const convertedWater = convertWater(totalWaterUse);
 
 
     // Set seasonal chart data (summer: Apr-May, monsoon: Jun-Sep, winter: Oct-Jan)
-    const seasonalWaterUse = [0.6, 0.6, 0.8, 1.2, 1.2, 1.2, 1.2, 0.8, 0.6, 0.6, 0.5, 0.5];
+    const seasonalWaterUse = [0.5, 0.6, 0.8, 1.5, 2.5, 1.8, 1.2, 1.1, 1.0, 0.7, 0.6, 0.5];
     const newChartData = seasonalWaterUse.map((season, index) => ({
       month: new Date(0, index).toLocaleString('en-US', { month: 'short' }),
       WaterUse: (convertedWater.liters / 12) * season,  // Seasonal adjustment
@@ -157,8 +157,8 @@ const convertedWater = convertWater(totalWaterUse);
   };
 
   return (
-    <div>
-      <div className='max-w-4xl mx-auto mt-[55px] p-6'>
+    <div className='bg-gradient-to-r from-blue-100 via-green-50 to-orange-100 py-9 rounded-3xl' >
+      <div className='max-w-4xl mx-auto mt-[55px] p-6 bg-white rounded-3xl'>
         <h2 className='text-2xl font-bold mb-4'>Agricultural Water Footprint Calculator</h2>
         <form onSubmit={handleSubmit} className='space-y-4'>
           {/* Basic Information */}
@@ -339,14 +339,14 @@ const convertedWater = convertWater(totalWaterUse);
             </div>
           </fieldset>
 
-          <Button type='submit'>Calculate</Button>
+          <Button className='rounded-full bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500' type='submit'>Calculate</Button>
         </form>
 
         {results && (
           <div className='mt-8'>
             <h3 className='text-xl font-bold mb-4'>Results</h3>
-            <p>Total Water Use: {results.totalWaterUseLiters} Liters ({results.totalWaterUseGallons} Gallons)</p>
-            <p>Water Footprint: {results.waterFootprint} m³/ton</p>
+            <p>Total Water Use: <span className='font-bold text-blue-600'>{results.totalWaterUseLiters}</span>  Liters (<span className='font-bold text-blue-600'>{results.totalWaterUseGallons}</span> Gallons)</p>
+            <p>Water Footprint: <span className='font-bold text-blue-600'>{results.waterFootprint}</span> m³/ton</p>
           </div>
         )}
 
@@ -358,10 +358,15 @@ const convertedWater = convertWater(totalWaterUse);
               <XAxis dataKey='month' />
               <YAxis />
               <Tooltip />
-              <Bar dataKey='WaterUse' fill='#8884d8' />
+              <Bar dataKey='WaterUse' fill='#2428c9' />
             </BarChart>
+            <p className='text-sm mt-4 italic text-gray-500'>Note: The water usage values presented in the chart are approximate and based on the data provided by the farmer. Actual water usage may vary depending on additional factors such as unforeseen weather conditions, changes in irrigation practices, and variations in crop growth. Therefore, these values should be used as estimates and not definitive metrics.</p>
+
+        <p className='text-sm mt-4 italic text-gray-500'>Note: The calculation of the water footprint is based on the input data provided by the farmer, including crop yield, water usage, and irrigation details. The accuracy of the water footprint may vary depending on the precision of the data entered and other influencing factors such as water evaporation, runoff, or crop-specific water requirements. These calculations provide an estimate and should be used as a guideline rather than an exact measurement.</p>
           </div>
         )}
+        
+
       </div>
     </div>
   );
