@@ -14,7 +14,7 @@ const bricolage_grotesque = Bricolage_Grotesque({
 export const metadata = {
   title: "AquaTrace",
   description: "A Platform to Calculate Water Footprint",
-  icons: "/favi-icon.jpg",
+  icons: "./img/logo.png",
   manifest: "/manifest.json",
 };
 
@@ -27,10 +27,13 @@ export default function RootLayout({
     <html lang="en">
       
       <body className={bricolage_grotesque.className}>
-      <Header />
+        <div className="bg-gradient-to-r from-blue-100 via-green-50 to-orange-100">
+        <Header />
         {children}
         <Footer />
         <Toaster />
+        </div>
+      
         </body>
     </html>
   );

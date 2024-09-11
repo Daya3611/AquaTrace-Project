@@ -3,7 +3,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className='px-4 sm:px-5 mt-4'>
+    <div className='px- sm:px-5 mt-4'>
   <div className='w-full bg-white rounded-t-[55px] p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
     
     <div className='flex flex-col items-center sm:items-start max-w-full sm:max-w-[200px]'>

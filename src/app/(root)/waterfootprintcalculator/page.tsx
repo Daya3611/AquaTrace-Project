@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Bar, BarChart, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import { toast } from "sonner";
+
 // Helper function to convert cubic meters to liters and gallons
 const convertWater = (cubicMeters: number) => {
   return {
@@ -117,35 +118,37 @@ const Page = () => {
     }
 
     // Calculate total water use in cubic meters
-    // Ensure values are converted to numbers
-const greenWaterValue = parseFloat(formData.greenWater) || 0;
-const blueWaterValue = parseFloat(formData.blueWater) || 0;
-const cropAreaValue = parseFloat(formData.cropArea) || 0;
-const irrigationValue = parseFloat(formData.irrigation) || 0;
-const otherSourcesValue = parseFloat(formData.otherSources) || 0;
-const cropYieldValue = parseFloat(formData.cropYield) || 0;
+    const greenWaterValue = parseFloat(greenWater) || 0;
+    const blueWaterValue = parseFloat(blueWater) || 0;
+    const greyWaterValue = parseFloat(greyWater) || 0;
+    const rainfallValue = parseFloat(rainfall) || 0;
+    const cropAreaValue = parseFloat(cropArea) || 0;
+    const irrigationValue = parseFloat(irrigation) || 0;
+    const otherSourcesValue = parseFloat(otherSources) || 0;
+    const cropYieldValue = parseFloat(cropYield) || 0;
 
-const totalWaterUse = ((greenWaterValue + blueWaterValue) / 1000) * cropAreaValue + irrigationValue + otherSourcesValue; // mm to meters
+    // Water use in cubic meters per hectare for green and blue water (converted from mm)
+    const totalWaterUse = ((greenWaterValue + blueWaterValue) / 1000) * cropAreaValue + irrigationValue + otherSourcesValue;
 
-// Calculate water footprint
-const totalYield = cropYieldValue * cropAreaValue; // tons
+    // Calculate total yield
+    const totalYield = cropYieldValue * cropAreaValue;  // tons
 
-if (totalYield === 0) {
-  toast("Please ensure that crop yield and crop area are greater than zero.");
-  return;
-}
+    if (totalYield === 0) {
+      toast("Please ensure that crop yield and crop area are greater than zero.");
+      return;
+    }
 
-const waterFootprint = totalWaterUse / totalYield; // m³/ton
+    // Calculate water footprint in cubic meters per ton
+    const waterFootprint = totalWaterUse / totalYield;
 
-// Convert cubic meters to liters and gallons
-const convertedWater = convertWater(totalWaterUse);
+    // Convert cubic meters to liters and gallons
+    const convertedWater = convertWater(totalWaterUse);
 
-
-    // Set seasonal chart data (summer: Apr-May, monsoon: Jun-Sep, winter: Oct-Jan)
+    // Seasonal water distribution (summer: Apr-May, monsoon: Jun-Sep, winter: Oct-Jan)
     const seasonalWaterUse = [0.5, 0.6, 0.8, 1.5, 2.5, 1.8, 1.2, 1.1, 1.0, 0.7, 0.6, 0.5];
     const newChartData = seasonalWaterUse.map((season, index) => ({
       month: new Date(0, index).toLocaleString('en-US', { month: 'short' }),
-      WaterUse: (convertedWater.liters / 12) * season,  // Seasonal adjustment
+      WaterUse: (convertedWater.liters / 12) * season,  // Assuming average monthly usage
     }));
 
     setChartData(newChartData);
@@ -157,7 +160,7 @@ const convertedWater = convertWater(totalWaterUse);
   };
 
   return (
-    <div className='bg-gradient-to-r from-blue-100 via-green-50 to-orange-100 py-9 rounded-3xl' >
+    <div className=' py-9 rounded-3xl' >
       <div className='max-w-4xl mx-auto mt-[55px] p-6 bg-white rounded-3xl'>
         <h2 className='text-2xl font-bold mb-4'>Agricultural Water Footprint Calculator</h2>
         <form onSubmit={handleSubmit} className='space-y-4'>
