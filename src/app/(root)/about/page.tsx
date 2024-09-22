@@ -40,7 +40,7 @@ function page() {
         },
       ];
 
-      
+    //   kkksksksksk
       
   return (
     <div className="mt-[90px] px-7">
@@ -50,7 +50,7 @@ function page() {
             <p className="mt-6 text-md text-gray-700 leading-relaxed text-justify">
         <strong className='text-blue-800 text-lg'>AquaTrace: Empowering Farmers with Sustainable Water Usage Practices</strong>
         <br /><br />
-        Water scarcity is one of the most pressing global challenges of our time, affecting millions of people and ecosystems around the world. As population growth and industrial expansion increase demand for water, it is essential to promote sustainable water usage practices to preserve this vital resource. Agriculture is a significant contributor to global water consumption, with farming accounting for roughly 70% of the world's freshwater withdrawals. To address this critical issue, AquaTrace aims to help farmers better understand their water footprint and adopt practices that promote more efficient and sustainable water use.
+        Water scarcity is one of the most pressing global challenges of our time, affecting millions of people and ecosystems around the world. As population growth and industrial expansion increase demand for water, it is essential to promote sustainable water usage practices to preserve this vital resource. Agriculture is a significant contributor to global water consumption, with farming accounting for roughly 70% of the worlds freshwater withdrawals. To address this critical issue, AquaTrace aims to help farmers better understand their water footprint and adopt practices that promote more efficient and sustainable water use.
         <br /><br />
         <strong className='text-blue-800 text-lg'>The Importance of Water Management in Agriculture</strong>
         <br /><br />
