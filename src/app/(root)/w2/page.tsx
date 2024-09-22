@@ -164,6 +164,7 @@ const Page = () => {
   <div className='max-w-4xl mx-auto mt-[55px] p-6 bg-white shadow-2xl rounded-3xl transition-all hover:shadow-3xl'>
     <h2 className='text-3xl font-bold mb-6 text-blue-800 text-center'>Agricultural Water Footprint Calculator</h2>
     <form onSubmit={handleSubmit} className='space-y-6'>
+      
       {/* Basic Information */}
       <fieldset className='border p-6 bg-blue-50 rounded-lg shadow-sm'>
         <legend className='font-semibold text-blue-700 mb-2 text-xl'>Basic Information</legend>
@@ -177,6 +178,8 @@ const Page = () => {
             <input type='text' name='farmName' value={formData.farmName} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
+
+        {/* Location and Date */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
             <label className='block text-gray-800'>Location:</label>
@@ -187,6 +190,8 @@ const Page = () => {
             <input type='date' name='date' value={formData.date} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
+
+        {/* Contact Information */}
         <div className='mt-4'>
           <label className='block text-gray-800'>Contact Information:</label>
           <input type='text' name='contactInfo' value={formData.contactInfo} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
@@ -216,6 +221,8 @@ const Page = () => {
             </select>
           </div>
         </div>
+
+        {/* Planting & Harvest Dates */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
             <label className='block text-gray-800'>Planting Date:</label>
@@ -226,6 +233,8 @@ const Page = () => {
             <input type='date' name='harvestDate' value={formData.harvestDate} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
+
+        {/* Crop Area & Yield */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
             <label className='block text-gray-800'>Crop Area (in hectares):</label>
@@ -241,6 +250,7 @@ const Page = () => {
       {/* Water Usage */}
       <fieldset className='border p-6 bg-blue-50 rounded-lg shadow-sm'>
         <legend className='font-semibold text-blue-700 mb-2 text-xl'>Water Usage</legend>
+        {/* Water Inputs */}
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <div>
             <label className='block text-gray-800'>Green Water (mm):</label>
@@ -255,6 +265,8 @@ const Page = () => {
             <input type='number' name='greyWater' value={formData.greyWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
+
+        {/* Rainfall & Irrigation */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
             <label className='block text-gray-800'>Rainfall (mm):</label>
@@ -267,56 +279,22 @@ const Page = () => {
         </div>
       </fieldset>
 
-      {/* Additional Information */}
-      <fieldset className='border p-6 bg-blue-50 rounded-lg shadow-sm'>
-        <legend className='font-semibold text-blue-700 mb-2 text-xl'>Additional Information</legend>
-        <div>
-          <label className='block text-gray-800'>Fertilizers Used:</label>
-          <textarea name='fertilizers' value={formData.fertilizers} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' rows={3}></textarea>
-        </div>
-        <div>
-          <label className='block text-gray-800'>Pesticides Used:</label>
-          <textarea name='pesticides' value={formData.pesticides} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' rows={3}></textarea>
-        </div>
-      </fieldset>
+      {/* Button */}
+      <Button className='mt-8 rounded-full bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-3 hover:bg-green-700 transition-all focus:ring-4 focus:ring-blue-300' type='submit'>
+        Calculate
+      </Button>
 
-      {/* Submit Button */}
-      <div className='text-center mt-6'>
-        <button type='submit' className='px-6 py-3 bg-blue-600 text-white font-semibold rounded-3xl hover:bg-blue-700 transition-all'>Calculate</button>
-      </div>
     </form>
 
-    {/* Results Section */}
-      {/* <div className='bg-green-100 rounded-2xl p-5 mt-4 shadow-xl'> */}
-      {results && (
-        <div className='bg-green-100 rounded-2xl p-5 mt-4 shadow-lg'>
-      <div className='mt-8'>
+    {results && (
+      <div className='mt-10 p-6 bg-green-100 rounded-xl shadow-md'>
         <h3 className='text-2xl font-bold mb-4 text-green-800'>Results</h3>
-        <p>Total Water Use: <span className='font-bold text-green-600'>{results.totalWaterUseLiters}</span> Liters (<span className='font-bold text-green-600'>{results.totalWaterUseGallons}</span> Gallons)</p>
-        <p>Water Footprint: <span className='font-bold text-green-600'>{results.waterFootprint}</span> m³/ton</p>
-      </div>
-      {/* Chart Section */}
-    {chartData.length > 0 && (
-      <div className='mt-8'>
-        <h3 className='text-xl font-bold mb-4 text-green-800'>Seasonal Water Use</h3>
-        <BarChart width={600} height={300} data={chartData}>
-          <CartesianGrid strokeDasharray='3 3' />
-          <XAxis dataKey='month' />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey='WaterUse' fill='#2e8d23' />
-        </BarChart>
-        <p className='text-sm mt-4 italic text-gray-500'>Note: The water usage values presented in the chart are approximate and based on the data provided by the farmer. Actual water usage may vary depending on additional factors such as unforeseen weather conditions, changes in irrigation practices, and variations in crop growth. Therefore, these values should be used as estimates and not definitive metrics.</p>
-        <p className='text-sm mt-4 italic text-gray-500'>Note: The calculation of the water footprint is based on the input data provided by the farmer, including crop yield, water usage, and irrigation details. The accuracy of the water footprint may vary depending on the precision of the data entered and other influencing factors such as water evaporation, runoff, or crop-specific water requirements. These calculations provide an estimate and should be used as a guideline rather than an exact measurement.</p>
+        <p>Total Water Use: <span className='font-bold text-green-700'>{results.totalWaterUse} cubic meters</span></p>
+        <p>Water Use Efficiency: <span className='font-bold text-green-700'>{results.waterUseEfficiency} tons per cubic meter</span></p>
       </div>
     )}
-      </div>
-    )}
-
-    
-      </div>
   </div>
-  
+</div>
 
 
   );

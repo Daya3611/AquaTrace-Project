@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       
       <body className={bricolage_grotesque.className}>
-        <div className="bg-gradient-to-r from-blue-100 via-green-50 to-orange-100">
+        <div className="">
         <Header />
         {children}
         <Footer />

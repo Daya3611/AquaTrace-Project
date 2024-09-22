@@ -11,8 +11,8 @@ export default function Home() {
       
       <div className="mt-[65px]">
       <Hero />
-      <Graph />
-      <TeamMember />
+      {/* <Graph />
+      <TeamMember /> */}
       </div>
       
     </div>

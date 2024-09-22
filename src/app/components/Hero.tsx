@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from '@/components/ui/button';
-import { Herr_Von_Muellerhoff } from 'next/font/google';
 import HeroText from './HeroText';
 import Image from 'next/image';
 
@@ -19,32 +12,28 @@ const img = [
 
 function Hero() {
   return (
-    <div className='relative text-center rounded-xl'>
-    <HeroText />
-    <div className='mt-4'>
-        <Carousel className='w-[95%] mx-auto mt-1 rounded-xl overflow-hidden'>
-            <CarouselContent className='flex w-full'>
-                {img.map((item, index) => (
-                    <CarouselItem key={index} className='flex-shrink-0 w-full'>
-                        <Image 
-                            width={500}
-                            height={500}
-                            src={item.src} 
-                            alt={`Carousel Image ${index + 1}`} 
-                            className='w-full max-h-[550px] object-fill rounded-[55px]'
-                        />
-                    </CarouselItem>
-                ))}
-            </CarouselContent>
-            {/* Optional navigation buttons */}
-            {/* <CarouselPrevious className='absolute top-1/2 left-6 transform -translate-y-1/2 z-10' />
-            <CarouselNext className='absolute top-1/2 right-6 transform -translate-y-1/2 z-10' /> */}
-        </Carousel>
-    </div>
-</div>
+    <div className='pt-9'>
+      <HeroText />
+      <div className='relative text-center p-8 rounded-lg'>
+      
+      
+     
 
-   
-    
+      <div className='flex gap-6 mt-8 justify-center'>
+        {['Active Farmers', 'Active Farmers', 'Active Farmers'].map((title, index) => (
+          <div key={index} className='w-[250px] h-[200px] bg-blue-200 rounded-xl flex items-center justify-center shadow-lg transition-transform transform hover:scale-105'>
+            <div className='text-center'>
+              <p className='text-lg font-medium mb-2'>{title}</p>
+              <p className='text-3xl font-bold mb-1'>
+                50+
+                <span className='text-sm text-gray-600 ml-2'>Some Text</span>
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    </div>
   );
 }
 
