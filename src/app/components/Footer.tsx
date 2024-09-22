@@ -11,18 +11,41 @@ function Footer() {
         <Image src='/img/logo.png' width={50} height={50} alt='logo' />
         <h1 className='text-2xl sm:text-3xl font-bold'>AquaTrace</h1>
       </div>
-      <p className='mt-3 text-center sm:text-left'>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. ......
+      <p className='mt-3 text-sm  sm:text-left'>
+      Optimizing Every Drop for a Sustainable Future
       </p>
     </div>
     
     <div className='mt-4 sm:mt-0'>
       <h4 className='text-lg sm:text-xl font-bold'>Pages</h4>
       <ul className='mt-4 space-y-2'>
-        <li>Home</li>
-        <li>About</li>
-        <li>Team Members</li>
-        <li>More pages...</li>
+        <li>
+          <a href='/' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+            Home
+            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
+          </a>
+        </li>
+
+        <li>
+          <a href='/waterfootprintcalculator' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+            Calculator
+            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
+          </a>
+        </li>
+
+        <li>
+          <a href='/about' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+            About
+            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
+          </a>
+        </li>
+
+        <li>
+          <a href='/faq' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+            FAQ
+            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
+          </a>
+        </li>
       </ul>
     </div>
     

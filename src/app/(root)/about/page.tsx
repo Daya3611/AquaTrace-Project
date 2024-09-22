@@ -60,7 +60,7 @@ function page() {
         <br /><br />
         This is where AquaTrace comes in. AquaTrace is a water footprint calculator designed to estimate water usage in daily activities, particularly in agriculture. By providing farmers with a clearer understanding of their water consumption patterns, we empower them to take action and make informed decisions about water management.
         <br /><br />
-        <strong className='text-blue-800 text-lg'>AquaTrace's Approach to Supporting Farmers</strong>
+        <strong className='text-blue-800 text-lg'>AquaTraces Approach to Supporting Farmers</strong>
         <br /><br />
         Our mission at AquaTrace is to help farmers better understand the water footprint associated with their agricultural practices and provide them with actionable insights to optimize water use. Through our calculator, farmers can estimate how much water they use in different stages of farming, from irrigation to processing, and identify areas where improvements can be made.
         <br /><br />
