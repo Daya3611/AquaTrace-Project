@@ -3,17 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from "sonner";
 import Image from 'next/image';
-
-function toWFC() {
-  if (typeof window !== 'undefined') {
-    window.location.href = "/waterfootprintcalculator";
-  }
-}
-
-
-function Showmssg1() {
-  toast("Please contact us for more details");
-}
+import Link from 'next/link';
 
 function HeroText() {
   return (
@@ -24,25 +14,22 @@ function HeroText() {
           <div>
             <div className='relative z-10 max-w-6xl mx-auto'>
               <div className='bg-transparent rounded-lg px-8'>
-                <h1 className='text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-5 animate-in'>
+                <h1 className='text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-4 animate-in'>
                   Join Us in the <span className='bg-blue-600 text-white px-3 py-1'>Fight</span> for the Environment
                 </h1>
                 <p className='text-sm md:text-base text-gray-600 mb-6 animate-in animate-delay-200'>
                   We are a network of partner organizations, water footprint professionals, and donors supporting our mission. As a non-profit, we rely on your support to continue our work. Your involvement is crucial to our success.
                 </p>
                 <div className='md:flex gap-3 grid'>
-                  <Button
-                    onClick={toWFC}
-                    size="lg"
-                  >
-                    Calculate your water footprint
+                  <Button size="lg" asChild>
+                    <Link href="/waterfootprintcalculator">
+                      Calculate your water footprint
+                    </Link>
                   </Button>
-                  <Button
-                    onClick={Showmssg1}
-                    variant="outline"
-                    size="lg"
-                  >
-                    What is a Footprint?
+                  <Button variant="outline" size="lg" asChild>
+                    <Link href="https://google.com/?query=what+is+water+footprint">
+                      What is a Footprint?
+                    </Link>
                   </Button>
                 </div>
               </div>
