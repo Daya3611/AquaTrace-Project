@@ -24,7 +24,7 @@ function Header() {
  
   return (
     <header className='fixed top-0 left-0 w-full bg-white z-50'>
-  <div className='py-4 px-6 lg:px-12'>
+  <div className='py-5 px-6 md:px-20 lg:px-32'>
     
     <div className='flex justify-between items-center'>
       <div className='flex items-center gap-2'>
@@ -63,7 +63,7 @@ function Header() {
       {/* Mobile Menu Trigger (visible only on small screens) */}
       <Sheet>
         <SheetTrigger className='block lg:hidden p-2'>
-          <HamburgerMenuIcon className='w-8 h-8 text-gray-800' />
+          <HamburgerMenuIcon className='w-5 h-5 text-gray-800' />
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
