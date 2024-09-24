@@ -15,7 +15,7 @@ import Link from 'next/link';
 export default function Header() {
 
   return (
-    <header className='fixed top-0 left-0 w-full bg-white z-50'>
+    <header className='fixed top-0 left-0 w-full bg-white z-50 border-b'>
       <div className='py-4 px-6 md:px-20 lg:px-32'>
 
         <div className='flex justify-between items-center'>
@@ -44,9 +44,9 @@ export default function Header() {
             <div className='flex items-center gap-4'>
               <Sheet>
                 <SheetTrigger className='block lg:hidden p-2'>
-                  <Button size="icon" variant="ringHover">
-                    <HamburgerMenuIcon className='w-4 h-4' />
-                  </Button>
+                  {/* <Button size="icon" variant="ringHover"> */}
+                    <HamburgerMenuIcon className='w-5 h-5' />
+                  {/* </Button> */}
                 </SheetTrigger>
                 <SheetContent>
                   <SheetHeader className='w-full h-full flex items-center justify-center'>

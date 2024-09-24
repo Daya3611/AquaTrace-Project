@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select"
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
 
 
 // Helper function to convert cubisc meters to liters and gallons
@@ -172,44 +173,42 @@ const Page = () => {
 
   return (
     <div className='py-9'>
-      <div className='max-w-4xl mx-auto mt-[55px] px-6 py-6 md:xp-20 lg:px-32'>
+      <div className={cn('mt-[55px] gap-7 px-6 py-6 md:px-20 w-full',results &&  'lg:grid grid-cols-2')}>
         {/* <h2 className='text-2xl font-bold mb-6'>Agricultural Water Footprint Calculator</h2> */}
-        <form onSubmit={handleSubmit} className='space-y-6'>
+        <form onSubmit={handleSubmit} className='grid md:grid-cols-2 gap-3'>
           {/* Basic Information */}
-          <fieldset className='border p-6 rounded-md'>
-            <legend className='font-semibold text-lg'>Basic Information</legend>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+          <fieldset className='border p-6 rounded-md h-fit'>
+            <h1 className='font-semibold text-lg mb-3 -mt-2'>Basic Information</h1>
+            <div>
               <div>
                 <Label>Farmers Name:</Label>
-                <Input type='text' name='farmerName' value={formData.farmerName} onChange={handleChange}/>
+                <Input type='text' name='farmerName' value={formData.farmerName} onChange={handleChange} />
               </div>
               <div>
                 <Label>Farm Name:</Label>
-                <Input type='text' name='farmName' value={formData.farmName} onChange={handleChange}/>
+                <Input type='text' name='farmName' value={formData.farmName} onChange={handleChange} />
               </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
-              <div>
-                <Label>Location:</Label>
-                <Input type='text' name='location' value={formData.location} onChange={handleChange}/>
-              </div>
-              <div>
-                <Label>Date:</Label>
-                <Input type='date' name='date' value={formData.date} onChange={handleChange}/>
-              </div>
+            <div>
+              <Label>Location:</Label>
+              <Input type='text' name='location' value={formData.location} onChange={handleChange} />
+            </div>
+            <div>
+              <Label>Date:</Label>
+              <Input type='date' name='date' value={formData.date} onChange={handleChange} />
             </div>
             <div className='mt-4'>
               <Label>Contact Information:</Label>
-              <Input type='text' name='contactInfo' value={formData.contactInfo} onChange={handleChange}/>
+              <Input type='text' name='contactInfo' value={formData.contactInfo} onChange={handleChange} />
             </div>
           </fieldset>
 
           {/* Crop Information */}
           <fieldset className='border p-6 rounded-md'>
-            <legend className='font-semibold text-lg'>Crop Information</legend>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+            <h1 className='font-semibold text-lg mb-3 -mt-2'>Crop Information</h1>
+            <div className='grid md:grid-cols-2 gap-2'>
               <div>
-                <Label>Crop Type:</Label>
+                <Label>Type:</Label>
                 <Select defaultValue={cropTypes[0]} onValueChange={value => setFormData(prev => ({ ...prev, cropType: value }))}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select Type" />
@@ -222,7 +221,7 @@ const Page = () => {
                 </Select>
               </div>
               <div>
-                <Label>Variety of Crop:</Label>
+                <Label>Variety:</Label>
                 <Select defaultValue={formData.cropVariety} onValueChange={value => setFormData(prev => ({ ...prev, cropVariety: value }))}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select Variety" />
@@ -235,67 +234,61 @@ const Page = () => {
                 </Select>
               </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
-              <div>
-                <Label>Planting Date:</Label>
-                <Input type='date' name='plantingDate' value={formData.plantingDate} onChange={handleChange}/>
-              </div>
-              <div>
-                <Label>Harvest Date:</Label>
-                <Input type='date' name='harvestDate' value={formData.harvestDate} onChange={handleChange}/>
-              </div>
+            <div>
+              <Label>Planting Date:</Label>
+              <Input type='date' name='plantingDate' value={formData.plantingDate} onChange={handleChange} />
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
-              <div>
-                <Label>Crop Area (in hectares):</Label>
-                <Input type='number' name='cropArea' value={formData.cropArea} onChange={handleChange}/>
-              </div>
-              <div>
-                <Label>Crop Yield (tons per hectare):</Label>
-                <Input type='number' name='cropYield' value={formData.cropYield} onChange={handleChange}/>
-              </div>
+            <div>
+              <Label>Harvest Date:</Label>
+              <Input type='date' name='harvestDate' value={formData.harvestDate} onChange={handleChange} />
+            </div>
+            <div>
+              <Label>Crop Area (in hectares):</Label>
+              <Input type='number' name='cropArea' value={formData.cropArea} onChange={handleChange} />
+            </div>
+            <div>
+              <Label>Crop Yield (tons per hectare):</Label>
+              <Input type='number' name='cropYield' value={formData.cropYield} onChange={handleChange} />
             </div>
           </fieldset>
 
           {/* Water Usage */}
           <fieldset className='border p-6 rounded-md'>
-            <legend className='font-semibold text-lg'>Water Usage</legend>
+            <h1 className='font-semibold text-lg mb-3 -mt-2'>Water Usage</h1>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
               <div>
-                <Label>Green Water (mm):</Label>
-                <Input type='number' name='greenWater' value={formData.greenWater} onChange={handleChange}/>
+                <Label>Green (mm):</Label>
+                <Input type='number' name='greenWater' value={formData.greenWater} onChange={handleChange} />
               </div>
               <div>
-                <Label>Blue Water (mm):</Label>
-                <Input type='number' name='blueWater' value={formData.blueWater} onChange={handleChange}/>
+                <Label>Blue (mm):</Label>
+                <Input type='number' name='blueWater' value={formData.blueWater} onChange={handleChange} />
               </div>
               <div>
-                <Label>Grey Water (mm):</Label>
-                <Input type='number' name='greyWater' value={formData.greyWater} onChange={handleChange}/>
+                <Label>Grey (mm):</Label>
+                <Input type='number' name='greyWater' value={formData.greyWater} onChange={handleChange} />
               </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
-              <div>
-                <Label>Rainfall (mm):</Label>
-                <Input type='number' name='rainfall' value={formData.rainfall} onChange={handleChange}/>
-              </div>
-              <div>
-                <Label>Irrigation (cubic meters):</Label>
-                <Input type='number' name='irrigation' value={formData.irrigation} onChange={handleChange}/>
-              </div>
+            <div>
+              <Label>Rainfall (mm):</Label>
+              <Input type='number' name='rainfall' value={formData.rainfall} onChange={handleChange} />
+            </div>
+            <div>
+              <Label>Irrigation (cubic meters):</Label>
+              <Input type='number' name='irrigation' value={formData.irrigation} onChange={handleChange} />
             </div>
           </fieldset>
 
           {/* Additional Information */}
           <fieldset className='border p-6 rounded-md'>
-            <legend className='font-semibold text-lg'>Additional Information</legend>
+            <h1 className='font-semibold text-lg mb-3 -mt-2'>Additional Information</h1>
             <div>
               <Label>Fertilizers Used:</Label>
-              <Textarea name='fertilizers' value={formData.fertilizers} onChange={handleChange}rows={3}></Textarea>
+              <Textarea name='fertilizers' value={formData.fertilizers} onChange={handleChange} rows={3}></Textarea>
             </div>
             <div>
               <Label>Pesticides Used:</Label>
-              <Textarea name='pesticides' value={formData.pesticides} onChange={handleChange}rows={3}></Textarea>
+              <Textarea name='pesticides' value={formData.pesticides} onChange={handleChange} rows={3}></Textarea>
             </div>
           </fieldset>
 
@@ -306,9 +299,9 @@ const Page = () => {
         </form>
 
         {/* Results Section */}
-        {/* <div className='bg-green-100 rounded-2xl p-5 mt-4 shadow-xl'> */}
+        {/* <div className='bg-green-100 rounded-2xl p-5 md:mt-0 mt-4 shadow-xl'> */}
         {results && (
-          <div className='border rounded-md p-5 mt-16'>
+          <div className='border rounded-md p-5 mt-16 md:mt-0'>
             <div>
               <h3 className='text-xl font-bold mb-1'>Results</h3>
               <p className='text-sm text-muted-foreground'>Total Water Use: <span className='font-bold text-blue-600'>{results.totalWaterUseLiters}</span> Liters (<span className='font-bold text-blue-600'>{results.totalWaterUseGallons}</span> Gallons)</p>
@@ -327,8 +320,8 @@ const Page = () => {
                     <Bar dataKey='WaterUse' fill='#2563eb' radius={4} />
                   </BarChart>
                 </div>
-                <p className='text-sm mt-4 italic text-muted-foreground'><span className='text-foreground'>Note:</span> The water usage values presented in the chart are approximate and based on the data provided by the farmer. Actual water usage may vary depending on additional factors such as unforeseen weather conditions, changes in irrigation practices, and variations in crop growth. Therefore, these values should be used as estimates and not definitive metrics.</p>
-                <p className='text-sm mt-4 italic text-muted-foreground'>The calculation of the water footprint is based on the input data provided by the farmer, including crop yield, water usage, and irrigation details. The accuracy of the water footprint may vary depending on the precision of the data entered and other influencing factors such as water evaporation, runoff, or crop-specific water requirements. These calculations provide an estimate and should be used as a guideline rather than an exact measurement.</p>
+                <p className='text-sm md:mt-0 mt-4 italic text-muted-foreground'><span className='text-foreground'>Note:</span> The water usage values presented in the chart are approximate and based on the data provided by the farmer. Actual water usage may vary depending on additional factors such as unforeseen weather conditions, changes in irrigation practices, and variations in crop growth. Therefore, these values should be used as estimates and not definitive metrics.</p>
+                <p className='text-sm md:mt-0 mt-4 italic text-muted-foreground'>The calculation of the water footprint is based on the input data provided by the farmer, including crop yield, water usage, and irrigation details. The accuracy of the water footprint may vary depending on the precision of the data entered and other influencing factors such as water evaporation, runoff, or crop-specific water requirements. These calculations provide an estimate and should be used as a guideline rather than an exact measurement.</p>
               </div>
             )}
           </div>
