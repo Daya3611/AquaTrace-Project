@@ -1,65 +1,109 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function Footer() {
   return (
-    <div className='px- sm:px-5 mt-4'>
-  <div className='w-full bg-white rounded-t-[55px] p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
-    
-    <div className='flex flex-col items-center sm:items-start max-w-full sm:max-w-[200px]'>
-      <div className='flex items-center gap-2 text-center sm:text-left'>
-        <Image src='/img/logo.png' width={50} height={50} alt='logo' />
-        <h1 className='text-2xl sm:text-3xl font-bold'>AquaTrace</h1>
+    <div className='px-6 md:px-20 mb-6 lg:px-32 mt-4'>
+      <div className='flex items-center gap-2'>
+        <Image src='/img/logo.png' width={45} height={45} alt='logo' />
+        <div>
+          <h1 className='text-xl font-bold'>AquaTrace</h1>
+          <p className='text-xs'>
+            Optimizing Every Drop for a Sustainable Future
+          </p>
+        </div>
       </div>
-      <p className='mt-3 text-sm  sm:text-left'>
-      Optimizing Every Drop for a Sustainable Future
+      {/* <div className='flex mt-3 flex-wrap sm:gap-10 justify-between sm:justify-normal'> */}
+      {/* <div>
+          <h4 className='text-lg font-bold'>Pages</h4>
+          <ul className='grid'>
+            <li>
+              <Link href='/' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href='/waterfootprintcalculator' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
+                Calculator
+              </Link>
+            </li>
+            <li>
+              <Link href='/about' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
+                About
+              </Link>
+            </li>
+            <li>
+              <Link href='/faq' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
+                FAQ
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className='text-lg font-bold'>Contributers</h4>
+          <ul className='grid'>
+            <li>
+              <Link href='https://github.com/daya9611' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
+                Dayanand
+              </Link>
+            </li>
+            <li>
+              <Link href='/' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
+                Teammate
+              </Link>
+            </li>
+            <li>
+              <Link href='/' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
+                Teammate
+              </Link>
+            </li>
+            <li>
+              <Link href='/' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
+                Teammate
+              </Link>
+            </li>
+          </ul>
+        </div> */}
+
+      <div className='flex items-center gap-8 mt-3'>
+        {/* <h3 className='text-lg font-bold'>Project For</h3> */}
+        <Image src='/img/SIH-logo.png' width={120} height={120} alt='logo' />
+        <Image src='/img/vsit-logo.png' width={160} height={160} alt='logo' />
+      </div>
+
+      {/* <div>
+          <h3 className='text-lg font-bold'>College</h3>
+          <Image src='/img/vsit-logo.png' width={200} height={200} alt='logo' />
+        </div> */}
+      {/* </div> */}
+      <p className='mt-3 text-sm text-foreground/90 max-w-2xl'>
+        This is an hackathon project built by a team of 4. for <span className='text-blue-600'>Smart India Hackathon 2024</span> from colloge <span className='text-blue-600'>VSIT</span>.
       </p>
-    </div>
-    
-    <div className='mt-4 sm:mt-0'>
-      <h4 className='text-lg sm:text-xl font-bold'>Pages</h4>
-      <ul className='mt-4 space-y-2'>
+      <ul className='flex gap-3 mt-1'>
         <li>
-          <a href='/' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          <Link href='/' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
             Home
-            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
-          </a>
+          </Link>
         </li>
-
         <li>
-          <a href='/waterfootprintcalculator' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          <Link href='/waterfootprintcalculator' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
             Calculator
-            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
-          </a>
+          </Link>
         </li>
-
         <li>
-          <a href='/about' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          <Link href='/about' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
             About
-            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
-          </a>
+          </Link>
         </li>
-
         <li>
-          <a href='/faq' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          <Link href='/faq' className='text-sm font-medium underline-offset-2 underline text-foreground/80 hover:text-foreground'>
             FAQ
-            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
-    
-    <div className='mt-4 sm:mt-0'>
-      <h3 className='text-lg sm:text-xl font-bold'>Project For</h3>
-      <Image src='/img/SIH-logo.png' width={150} height={150} alt='logo' className='pt-4' />
-    </div>
-    
-    <div className='mt-4 sm:mt-0'>
-      <h3 className='text-lg sm:text-xl font-bold'>College Name</h3>
-      <Image src='/img/vsit-logo.png' width={200} height={200} alt='logo' className='pt-4' />
-    </div>
-  </div>
-</div>
 
   )
 }
