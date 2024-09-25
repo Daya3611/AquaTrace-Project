@@ -3,6 +3,11 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Bar, BarChart, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import { toast } from "sonner";
+import Link from 'next/link';
+
+
+
+
 
 // Helper function to convert cubisc meters to liters and gallons
 const convertWater = (cubicMeters: number) => {
@@ -205,6 +210,8 @@ const Page = () => {
                 <option key={type} value={type}>{type}</option>
               ))}
             </select>
+            
+
           </div>
           <div>
             <label className='block text-gray-800'>Variety of Crop:</label>
@@ -218,7 +225,7 @@ const Page = () => {
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
-            <label className='block text-gray-800'>Planting Date:</label>
+            <label className='block text-gray-800'>Planting Date: </label>
             <input type='date' name='plantingDate' value={formData.plantingDate} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
@@ -228,11 +235,11 @@ const Page = () => {
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
-            <label className='block text-gray-800'>Crop Area (in hectares):</label>
+            <label className='block text-gray-800'>Crop Area (in hectares): <span className='text-red-600'>*</span></label>
             <input type='number' name='cropArea' value={formData.cropArea} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
-            <label className='block text-gray-800'>Crop Yield (tons per hectare):</label>
+            <label className='block text-gray-800'>Crop Yield (tons per hectare): <span className='text-red-600'>*</span></label>
             <input type='number' name='cropYield' value={formData.cropYield} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
@@ -243,25 +250,25 @@ const Page = () => {
         <legend className='font-semibold text-blue-700 mb-2 text-xl'>Water Usage</legend>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <div>
-            <label className='block text-gray-800'>Green Water (mm):</label>
+            <label className='block text-gray-800'>Green Water (mm): <span className='text-red-600'>*</span></label>
             <input type='number' name='greenWater' value={formData.greenWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
-            <label className='block text-gray-800'>Blue Water (mm):</label>
+            <label className='block text-gray-800'>Blue Water (mm): <span className='text-red-600'>*</span></label>
             <input type='number' name='blueWater' value={formData.blueWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
-            <label className='block text-gray-800'>Grey Water (mm):</label>
+            <label className='block text-gray-800'>Grey Water (mm): <span className='text-red-600'>*</span></label>
             <input type='number' name='greyWater' value={formData.greyWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
-            <label className='block text-gray-800'>Rainfall (mm):</label>
+            <label className='block text-gray-800'>Rainfall (mm): <span className='text-red-600'>*</span></label>
             <input type='number' name='rainfall' value={formData.rainfall} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
-            <label className='block text-gray-800'>Irrigation (cubic meters):</label>
+            <label className='block text-gray-800'>Irrigation (cubic meters): <span className='text-red-600'>*</span></label>
             <input type='number' name='irrigation' value={formData.irrigation} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
@@ -308,6 +315,13 @@ const Page = () => {
         </BarChart>
         <p className='text-sm mt-4 italic text-gray-500'>Note: The water usage values presented in the chart are approximate and based on the data provided by the farmer. Actual water usage may vary depending on additional factors such as unforeseen weather conditions, changes in irrigation practices, and variations in crop growth. Therefore, these values should be used as estimates and not definitive metrics.</p>
         <p className='text-sm mt-4 italic text-gray-500'>Note: The calculation of the water footprint is based on the input data provided by the farmer, including crop yield, water usage, and irrigation details. The accuracy of the water footprint may vary depending on the precision of the data entered and other influencing factors such as water evaporation, runoff, or crop-specific water requirements. These calculations provide an estimate and should be used as a guideline rather than an exact measurement.</p>
+        
+        <p>
+          <Link href='/relatedvideos'>
+            <Button className='mt-8 bg-blue-700 rounded-2xl px-6 py-5'>Watch Some Videos</Button>
+          </Link>
+          
+        </p>
       </div>
     )}
       </div>

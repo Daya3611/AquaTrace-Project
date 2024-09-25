@@ -6,37 +6,37 @@ function page() {
         {
           name: 'Akshatha Jain',
           role: 'Mentorr',         
-          image: 'https://via.placeholder.com/300x300',
+          image: './img/demoF.jpg',
         },
         {
           name: 'Jyoti Gupta',
           role: 'Team Leader',
-          image: 'https://via.placeholder.com/300x300',
+          image: './img/demoF.jpg',
         },
         {
           name: 'Kashish Maurya',
           role: 'Team Member',
-          image: 'https://via.placeholder.com/300x300',
+          image: './img/demoF.jpg',
         },
         {
           name: 'Asgar Khan',
           role: 'Team Member',
-          image: 'https://via.placeholder.com/300x300',
+          image: './img/demoM.jpg',
         },
         {
             name: 'Dayanand Gawade',
             role: 'Team Member',
-            image: 'https://via.placeholder.com/300x300',
+            image: './img/demoM.jpg',
         },
         {
             name: 'Sam Justin Nadar',
             role: 'Team Member',
-            image: 'https://via.placeholder.com/300x300',
+            image: './img/demoM.jpg',
         },
         {
             name: 'Sanjog Ram',
             role: 'Team Member',
-            image: 'https://via.placeholder.com/300x300',
+            image: './img/demoM.jpg',
         },
       ];
 
@@ -115,7 +115,7 @@ function page() {
         <img
           src={member.image}
           alt={`${member.name}`}
-          className="w-full h-56 object-cover"
+          className="w-full h-56 object-fill"
         />
         <div className="p-6 text-center">
           <h3 className="text-2xl font-bold text-blue-800">{member.name}</h3>

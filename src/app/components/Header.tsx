@@ -23,13 +23,13 @@ function Header() {
 
  
   return (
-    <header className='fixed top-0 left-0 w-full bg-white z-50'>
+    <header className='fixed top-0 left-0 w-full bg-white z-50 border-b'>
   <div className='py-4 px-6 lg:px-12'>
     
     <div className='flex justify-between items-center'>
       <div className='flex items-center gap-2'>
         <Image src='/img/logo.png' width={30} height={30} alt='AquaTrace Logo' />
-        <h1 className='text-2xl font-bold text-gray-900'>AquaTrace</h1>
+        <h1 className='text-2xl font-bold text-blue-900'>AquaTrace</h1>
       </div>
 
       
