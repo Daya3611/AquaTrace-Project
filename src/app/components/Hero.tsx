@@ -19,7 +19,7 @@ function Hero() {
       
      
 
-      <div className='flex gap-6 mt-8 justify-center'>
+      {/* <div className='flex gap-6 mt-8 justify-center'>
         {['Active Farmers', 'Active Farmers', 'Active Farmers'].map((title, index) => (
           <div key={index} className='w-[250px] h-[200px] bg-blue-200 rounded-xl flex items-center justify-center shadow-lg transition-transform transform hover:scale-105'>
             <div className='text-center'>
@@ -31,7 +31,7 @@ function Hero() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
     </div>
   );

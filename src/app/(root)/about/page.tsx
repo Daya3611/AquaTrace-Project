@@ -40,7 +40,7 @@ function page() {
         },
       ];
 
-    //   kkksksksksk
+   
       
   return (
     <div className="mt-[90px] px-7">
