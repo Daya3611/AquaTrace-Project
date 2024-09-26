@@ -49,7 +49,7 @@ function Hero() {
             <div className="bg-white p-6 shadow-lg rounded-lg hover:shadow-2xl transition duration-300">
               <h3 className="text-xl font-bold text-blue-800 mb-2">	1. Water Resource Management </h3>
               <p className="text-gray-600 mb-4">
-                Agriculture uses around 70% of the world's freshwater. Understanding the water footprint helps optimize water use, ensuring that water resources are used efficiently and conserved for future needs, especially in water-scarce regions.
+                Agriculture uses around 70% of the worlds freshwater. Understanding the water footprint helps optimize water use, ensuring that water resources are used efficiently and conserved for future needs, especially in water-scarce regions.
 
               </p>
 
@@ -105,7 +105,7 @@ function Hero() {
             <div className="bg-white p-6 shadow-lg rounded-lg hover:shadow-2xl transition duration-300">
               <h3 className="text-xl font-bold text-blue-800 mb-2">Adopt Efficient Irrigation Techniques</h3>
               <p className="text-gray-600 mb-4">
-               Drip irrigation and sprinkler systems deliver water directly to the plant's roots, reducing evaporation and runoff. These systems use much less water than traditional irrigation methods like flood irrigation.
+               Drip irrigation and sprinkler systems deliver water directly to the plants roots, reducing evaporation and runoff. These systems use much less water than traditional irrigation methods like flood irrigation.
 
               </p>
               
