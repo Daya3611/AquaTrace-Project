@@ -31,7 +31,6 @@ function Header() {
         <Image src='/img/logo.png' width={30} height={30} alt='AquaTrace Logo' />
         <h1 className='text-2xl font-bold text-blue-900'>AquaTrace</h1>
       </div>
-
       
       <div className='hidden lg:flex space-x-8 mr-4'>
         <a href='/' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
@@ -44,13 +43,23 @@ function Header() {
           <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
         </a>
 
+        <a href='/#why' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          Why ?
+          <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
+        </a>
+
+        <a href='/#how' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          How ?
+          <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
+        </a>
+
         <a href='/about' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
           About
           <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
         </a>
 
         <a href='/faq' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
-          FAQ
+          Contact
           <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
         </a>
 
@@ -70,6 +79,7 @@ function Header() {
             {/* <SheetTitle>Menu</SheetTitle>
             <SheetDescription>Navigate through the available options.</SheetDescription> */}
             <div className='flex flex-col space-y-4'>
+
               <a href='/' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
           Home
           <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>

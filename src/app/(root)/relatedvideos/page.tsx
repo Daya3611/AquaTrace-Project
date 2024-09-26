@@ -10,6 +10,7 @@ const relatedVideos = [
         channel: "AgroTech Solutions",
         views: "500K",
         uploaded: "3 days ago",
+        url: "https://www.youtube.com/watch?v=1",
       },
       {
         id: 2,
@@ -18,6 +19,7 @@ const relatedVideos = [
         channel: "Future Farms",
         views: "1.1M",
         uploaded: "1 week ago",
+        url: "https://www.youtube.com/watch?v=1",
       },
       {
         id: 3,
@@ -26,6 +28,7 @@ const relatedVideos = [
         channel: "Green Agriculture",
         views: "650K",
         uploaded: "5 days ago",
+        url: "https://www.youtube.com/watch?v=1",
       },
       {
         id: 4,
@@ -34,6 +37,7 @@ const relatedVideos = [
         channel: "Sustainable Farming Co.",
         views: "300K",
         uploaded: "2 days ago",
+        url: "https://www.youtube.com/watch?v=1",
       },
       {
         id: 5,
@@ -42,6 +46,7 @@ const relatedVideos = [
         channel: "Urban Green",
         views: "900K",
         uploaded: "2 weeks ago",
+        url: "https://www.youtube.com/watch?v=1",
       },
     // Add more related videos...
   ];
@@ -65,7 +70,7 @@ function page() {
               <p className="text-sm text-gray-600">{video.channel}</p>
               <div className='flex items-center gap-[185px]'>
                 <p className="text-sm text-gray-500">{video.views} views • {video.uploaded}</p>
-                <p className=''><Button className='bg-blue-700 rounded-3xl'>Watch Now</Button></p>
+                <p className={video.url}><Button className='bg-blue-700 rounded-3xl'>Watch Now</Button></p>
               </div>
             </div>
           </div>
