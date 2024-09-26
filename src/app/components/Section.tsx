@@ -1,56 +1,53 @@
+import { InputIcon, MagnifyingGlassIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import React from 'react';
 
+
 function Section() {
   return (
-    <div className="mt-5 bg-blue-50">
-      <div className="flex flex-col items-center py-16">
-        {/* Main Heading */}
-        <h1 className="text-4xl font-bold text-blue-800 mb-10">
-          Calculate Your Water Footprint
-        </h1>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
+      {/* Heading Section */}
+      <div className="text-center mb-12">
+        <h3 className="text-lg font-medium text-indigo-600">How It Works</h3>
+        <h2 className="text-4xl font-bold text-gray-800">3 Easy Steps</h2>
+      </div>
 
-        {/* Grid Layout for the sections */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-10 max-w-7xl">
-          {/* Section for Hindi */}
-          <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-4">English</h3>
-            <p className="text-gray-600 text-center mb-6">
-              Calculate your water footprint in English.
-            </p>
-            <Link href="#">
-              <button className="px-6 py-2 bg-blue-800 text-white font-semibold rounded-md hover:bg-blue-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                Go to English Page
-              </button>
-            </Link>
+      {/* Steps Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        {/* Step 1: Input the Data */}
+        <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gradient-to-r from-purple-500 to-blue-500 rounded-full">
+            <InputIcon className="text-white text-2xl" />
           </div>
-
-          {/* Section for Marathi */}
-          <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-4">Hindi</h3>
-            <p className="text-gray-600 text-center mb-6">
-              Calculate your water footprint in Hindi.
-            </p>
-            <Link href="#">
-              <button className="px-6 py-2 bg-blue-800 text-white font-semibold rounded-md hover:bg-blue-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                Go to Hindi Page
-              </button>
-            </Link>
-          </div>
-
-          {/* Section for English */}
-          <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-4">Marathi</h3>
-            <p className="text-gray-600 text-center mb-6">
-              Calculate your water footprint in Marathi.
-            </p>
-            <Link href="#">
-              <button className="px-6 py-2 bg-blue-800 text-white font-semibold rounded-md hover:bg-blue-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                Go to Marathi Page
-              </button>
-            </Link>
-          </div>
+          <h3 className="text-xl font-semibold text-gray-700 mb-2">Input the data</h3>
+          <p className="text-gray-600">
+            Users provide object descriptions or images. Multilingual text input or image recognition is used.
+          </p>
         </div>
+
+        {/* Step 2: Calculation */}
+        <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gradient-to-r from-purple-500 to-blue-500 rounded-full">
+            <MagnifyingGlassIcon className="text-white text-2xl" />
+          </div>
+          <h3 className="text-xl font-semibold text-gray-700 mb-2">Calculation</h3>
+          <p className="text-gray-600">
+            AI interprets the input and matches it with water footprint data. Water footprint is calculated for the specified object.
+          </p>
+        </div>
+
+        {/* Step 3: Presentation */}
+        <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gradient-to-r from-purple-500 to-blue-500 rounded-full">
+            <PaperPlaneIcon className="text-white text-2xl" />
+          </div>
+          <h3 className="text-xl font-semibold text-gray-700 mb-2">Presentation</h3>
+          <p className="text-gray-600">
+            Results are displayed to users with proper illustration.
+          </p>
+        </div>
+
       </div>
     </div>
   );

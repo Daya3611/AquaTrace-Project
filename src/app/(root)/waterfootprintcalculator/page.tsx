@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Bar, BarChart, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import { toast } from "sonner";
 import Link from 'next/link';
+import Translator from './translator';
 
 
 
@@ -167,7 +168,14 @@ const Page = () => {
   return (
     <div className='py-9 rounded-3xl bg-gradient-to-r from-blue-100 to-blue-200'>
   <div className='max-w-4xl mx-auto mt-[55px] p-6 bg-white shadow-2xl rounded-3xl transition-all hover:shadow-3xl'>
-    <h2 className='text-3xl font-bold mb-6 text-blue-800 text-center'>Agricultural Water Footprint Calculator</h2>
+    
+    
+    <h2 className='text-4xl font-bold mb-6 text-blue-800 text-center'>Agricultural Water Footprint Calculator</h2>
+
+    <div>
+      <Translator/>
+    </div>
+
     <form onSubmit={handleSubmit} className='space-y-6'>
       {/* Basic Information */}
       <fieldset className='border p-6 bg-blue-50 rounded-lg shadow-sm'>
@@ -250,15 +258,15 @@ const Page = () => {
         <legend className='font-semibold text-blue-700 mb-2 text-xl'>Water Usage</legend>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <div>
-            <label className='block text-gray-800'>Green Water (mm): <span className='text-red-600'>*</span></label>
+            <label className='block text-gray-800'>Recyled Water (mm): <span className='text-red-600'>*</span></label>
             <input type='number' name='greenWater' value={formData.greenWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
-            <label className='block text-gray-800'>Blue Water (mm): <span className='text-red-600'>*</span></label>
+            <label className='block text-gray-800'>Ground Water (mm): <span className='text-red-600'>*</span></label>
             <input type='number' name='blueWater' value={formData.blueWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
-            <label className='block text-gray-800'>Grey Water (mm): <span className='text-red-600'>*</span></label>
+            <label className='block text-gray-800'>Stored Water (mm): <span className='text-red-600'>*</span></label>
             <input type='number' name='greyWater' value={formData.greyWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
@@ -329,7 +337,7 @@ const Page = () => {
 
     
       </div>
-  </div>
+    </div>
   
 
 

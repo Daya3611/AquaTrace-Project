@@ -17,7 +17,7 @@ function Hero() {
       <HeroText />
 
       {/* Image Carousel or Hero Images */}
-      <div className="relative text-center p-8 rounded-lg">
+      {/* <div className="relative text-center p-8 rounded-lg">
         <div className="flex justify-center gap-4">
           {img.map((image, index) => (
             <Image 
@@ -30,7 +30,7 @@ function Hero() {
             />
           ))}
         </div>
-      </div>
+      </div> */}
 
       <div>
         <Section />
