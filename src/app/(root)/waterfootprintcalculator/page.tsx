@@ -179,41 +179,41 @@ const Page = () => {
 
     <form onSubmit={handleSubmit} className='space-y-6'>
       {/* Basic Information */}
-      <fieldset className='border p-6 bg-blue-50 rounded-lg shadow-sm'>
+      <fieldset className='border p-6 bg-blue-50 rounded-3xl shadow-sm'>
         <legend className='font-semibold text-blue-700 mb-2 text-xl'>Basic Information</legend>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           <div>
             <label className='block text-gray-800'>Farmers Name:</label>
-            <input type='text' name='farmerName' value={formData.farmerName} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='text' name='farmerName' value={formData.farmerName} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
             <label className='block text-gray-800'>Farm Name:</label>
-            <input type='text' name='farmName' value={formData.farmName} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='text' name='farmName' value={formData.farmName} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
             <label className='block text-gray-800'>Location:</label>
-            <input type='text' name='location' value={formData.location} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='text' name='location' value={formData.location} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
             <label className='block text-gray-800'>Date:</label>
-            <input type='date' name='date' value={formData.date} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='date' name='date' value={formData.date} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
         <div className='mt-4'>
           <label className='block text-gray-800'>Contact Information:</label>
-          <input type='text' name='contactInfo' value={formData.contactInfo} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+          <input type='text' name='contactInfo' value={formData.contactInfo} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
         </div>
       </fieldset>
 
       {/* Crop Information */}
-      <fieldset className='border p-6 bg-blue-50 rounded-lg shadow-sm'>
+      <fieldset className='border p-6 bg-blue-50 rounded-3xl shadow-sm'>
         <legend className='font-semibold text-blue-700 mb-2 text-xl'>Crop Information</legend>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           <div>
             <label className='block text-gray-800'>Crop Type:</label>
-            <select name='cropType' value={formData.cropType} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all'>
+            <select name='cropType' value={formData.cropType} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all'>
               <option value=''>Select Crop Type</option>
               {cropTypes.map(type => (
                 <option key={type} value={type}>{type}</option>
@@ -224,7 +224,7 @@ const Page = () => {
           </div>
           <div>
             <label className='block text-gray-800'>Variety of Crop:</label>
-            <select name='cropVariety' value={formData.cropVariety} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all'>
+            <select name='cropVariety' value={formData.cropVariety} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all'>
               <option value=''>Select Crop Variety</option>
               {formData.cropType && (cropVarieties as Record<string, string[]>)[formData.cropType]?.map(variety => (
                 <option key={variety} value={variety}>{variety}</option>
@@ -235,64 +235,64 @@ const Page = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
             <label className='block text-gray-800'>Planting Date: </label>
-            <input type='date' name='plantingDate' value={formData.plantingDate} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='date' name='plantingDate' value={formData.plantingDate} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
             <label className='block text-gray-800'>Harvest Date:</label>
-            <input type='date' name='harvestDate' value={formData.harvestDate} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='date' name='harvestDate' value={formData.harvestDate} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
             <label className='block text-gray-800'>Crop Area (in hectares): <span className='text-red-600'>*</span></label>
-            <input type='number' name='cropArea' value={formData.cropArea} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='number' name='cropArea' value={formData.cropArea} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
             <label className='block text-gray-800'>Crop Yield (tons per hectare): <span className='text-red-600'>*</span></label>
-            <input type='number' name='cropYield' value={formData.cropYield} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='number' name='cropYield' value={formData.cropYield} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
       </fieldset>
 
       {/* Water Usage */}
-      <fieldset className='border p-6 bg-blue-50 rounded-lg shadow-sm'>
+      <fieldset className='border p-6 bg-blue-50 rounded-3xl shadow-sm'>
         <legend className='font-semibold text-blue-700 mb-2 text-xl'>Water Usage</legend>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <div>
             <label className='block text-gray-800'>Recycled Water (mm): <span className='text-red-600'>*</span></label>
-            <input type='number' name='greenWater' value={formData.greenWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='number' name='greenWater' value={formData.greenWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
             <label className='block text-gray-800'>Ground Water (mm): <span className='text-red-600'>*</span></label>
-            <input type='number' name='blueWater' value={formData.blueWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='number' name='blueWater' value={formData.blueWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
             <label className='block text-gray-800'>Stored Water (mm): <span className='text-red-600'>*</span></label>
-            <input type='number' name='greyWater' value={formData.greyWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='number' name='greyWater' value={formData.greyWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
           <div>
             <label className='block text-gray-800'>Rainfall (mm): <span className='text-red-600'>*</span></label>
-            <input type='number' name='rainfall' value={formData.rainfall} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='number' name='rainfall' value={formData.rainfall} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
             <label className='block text-gray-800'>Irrigation (cubic meters): <span className='text-red-600'>*</span></label>
-            <input type='number' name='irrigation' value={formData.irrigation} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
+            <input type='number' name='irrigation' value={formData.irrigation} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
         </div>
       </fieldset>
 
       {/* Additional Information */}
-      <fieldset className='border p-6 bg-blue-50 rounded-lg shadow-sm'>
+      <fieldset className='border p-6 bg-blue-50 rounded-3xl shadow-sm'>
         <legend className='font-semibold text-blue-700 mb-2 text-xl'>Additional Information</legend>
         <div>
           <label className='block text-gray-800'>Fertilizers Used:</label>
-          <textarea name='fertilizers' value={formData.fertilizers} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' rows={3}></textarea>
+          <textarea name='fertilizers' value={formData.fertilizers} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' rows={3}></textarea>
         </div>
         <div>
           <label className='block text-gray-800'>Pesticides Used:</label>
-          <textarea name='pesticides' value={formData.pesticides} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' rows={3}></textarea>
+          <textarea name='pesticides' value={formData.pesticides} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 transition-all' rows={3}></textarea>
         </div>
       </fieldset>
 
@@ -326,9 +326,11 @@ const Page = () => {
         <p className='text-sm mt-4 italic text-gray-500'>Note: The calculation of the water footprint is based on the input data provided by the farmer, including crop yield, water usage, and irrigation details. The accuracy of the water footprint may vary depending on the precision of the data entered and other influencing factors such as water evaporation, runoff, or crop-specific water requirements. These calculations provide an estimate and should be used as a guideline rather than an exact measurement.</p>
         
         <p>
-          <Link href='/relatedvideos'>
-            <Button className='mt-8 bg-blue-700 rounded-2xl px-6 py-5'>Watch Some Videos</Button>
-          </Link>
+        <Link href="/relatedvideos">
+          <Button className="mt-8 bg-blue-700 rounded-2xl px-6 py-5 transition-transform duration-300 hover:scale-105 hover:bg-blue-800">
+            Watch Some Videos
+          </Button>
+        </Link>
           
         </p>
       </div>
