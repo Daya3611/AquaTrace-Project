@@ -76,7 +76,7 @@ function Hero() {
 
         {/* How Section */}
         <div className="mt-16 p-8 bg-gradient-to-r from-blue-300 via-blue-100 to-purple-200 rounded-3xl shadow-md" id="how">
-          <h2 className="text-5xl font-bold mb-4 text-blue-900 text-center">How?</h2>
+          <h2 className="text-5xl font-bold mb-4 text-blue-900 text-center">How can we save water ?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             {howData.map((item, index) => (
               <div key={index} className="bg-white p-6 shadow-lg rounded-3xl hover:shadow-2xl transition duration-300 animt transform hover:-translate-y-2">

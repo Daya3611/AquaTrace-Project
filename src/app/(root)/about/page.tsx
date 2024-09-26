@@ -116,19 +116,24 @@ function page() {
         <div className="mt-16">
   <h2 className="text-4xl font-semibold text-center text-blue-900">Meet Our Team</h2>
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 px-4 items-center">
-    {teamMembers.map((member, index) => (
-      <div
-        key={index}
-        className="bg-gradient-to-b from-blue-100 to-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col items-center justify-center p-6 border border-blue-200"
-      >
-        <h3 className="text-3xl font-bold text-blue-800">{member.name}</h3>
-        <p className="mt-2 text-gray-600 text-md italic">{member.role}</p>
-        {/* <div className="mt-4 bg-blue-600 text-white rounded-full px-4 py-2 shadow hover:bg-blue-700 transition duration-300">
-          <button className="focus:outline-none">Learn More</button>
-        </div> */}
-      </div>
-    ))}
-  </div>
+  {teamMembers.map((member, index) => (
+    <div
+      key={index}
+      className="bg-gradient-to-b from-blue-100 to-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col items-center justify-center p-6 border border-blue-200"
+    >
+      <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-800">
+        {member.name}
+      </h3>
+      <p className="mt-2 text-sm sm:text-md md:text-lg text-gray-600 italic">
+        {member.role}
+      </p>
+      {/* <div className="mt-4 bg-blue-600 text-white rounded-full px-4 py-2 shadow hover:bg-blue-700 transition duration-300">
+        <button className="focus:outline-none">Learn More</button>
+      </div> */}
+    </div>
+  ))}
+</div>
+
 </div>
 
 
