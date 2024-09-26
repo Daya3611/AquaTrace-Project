@@ -60,7 +60,7 @@ function Hero() {
 
       {/* Why and How Section */}
       <div className="mt-16 p-8 bg-white rounded-lg ">
-        
+
         {/* Why Section */}
         <div className="mt-16 p-8 bg-gradient-to-r from-blue-300 via-blue-100 to-purple-200 rounded-3xl shadow-md " id="why">
           <h2 className="text-5xl font-bold mb-4 text-blue-900 text-center">Why?</h2>
