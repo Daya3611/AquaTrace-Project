@@ -10,7 +10,7 @@ const Preloader: React.FC = () => {
         const timer = setTimeout(() => {
             setShow(false);
             document.body.style.overflow = 'auto';
-        }, 200);
+        }, 250);
 
         return () => clearTimeout(timer); // Cleanup on unmount
     }, []);
@@ -18,8 +18,8 @@ const Preloader: React.FC = () => {
     return show && (
         <div className='fixed z-[9999999] top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-white'>
             <div className='grid place-items-center'>
-                <Loader className="h-5 w-5 animate-spin"/>
-                <p className="text-sm text-center mt-1 text-muted-foreground">Hold on! loading.......</p>
+                <Loader className="h-7 w-7 animate-spin"/>
+                <p className="text-sm text-center mt-1 text-muted-foreground">Hold on ! loading.......</p>
             </div>
         </div>
     );
