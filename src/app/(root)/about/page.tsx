@@ -46,7 +46,7 @@ function page() {
       
   return (
     <div className="mt-[90px] px-7">
-        <div className="bg-blue-100 rounded-3xl shadow-lg">
+        <div className="bg-gradient-to-b from-blue-200 via-blue-100 to-white rounded-3xl shadow-lg border border-blue-300">
             <div className="container mx-auto py-12 px-8 text-center">
             <h1 className="text-5xl font-extrabold text-blue-900">About Us</h1>
             <p className="mt-6 text-md text-gray-700 leading-relaxed text-justify">

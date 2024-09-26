@@ -18,7 +18,7 @@ function Footer() {
     
     <div className='mt-4 sm:mt-0'>
       <h4 className='text-lg sm:text-xl font-bold'>Pages</h4>
-      <ul className='mt-4 space-y-2'>
+      <ul className='mt-4 space-y-1 grid grid-cols-4 items-center'>
         <li>
           <a href='/' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
             Home
@@ -35,6 +35,20 @@ function Footer() {
 
         <li>
           <a href='/about' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+            Why ? 
+            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
+          </a>
+        </li>
+
+        <li>
+          <a href='/faq' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+            How
+            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
+          </a>
+        </li>
+
+        <li>
+          <a href='/faq' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
             About
             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
           </a>
@@ -42,7 +56,7 @@ function Footer() {
 
         <li>
           <a href='/faq' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
-            FAQ
+            Contact
             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
           </a>
         </li>
