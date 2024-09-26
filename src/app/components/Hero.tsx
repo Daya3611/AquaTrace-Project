@@ -3,6 +3,7 @@ import React from 'react';
 import HeroText from './HeroText';
 import Section from './Section';
 import '../globals.css'
+import Features from './Features';
 
 const whyData = [
   {
@@ -55,16 +56,17 @@ function Hero() {
     <div className="pt-9">
       <HeroText />
       <Section />
+      <Features />
 
       {/* Why and How Section */}
       <div className="mt-16 p-8 bg-white rounded-lg ">
         
         {/* Why Section */}
-        <div className="mt-16 p-8 bg-gradient-to-r from-blue-300 via-blue-100 to-purple-200 rounded-3xl shadow-md" id="why">
+        <div className="mt-16 p-8 bg-gradient-to-r from-blue-300 via-blue-100 to-purple-200 rounded-3xl shadow-md " id="why">
           <h2 className="text-5xl font-bold mb-4 text-blue-900 text-center">Why?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5">
             {whyData.map((item, index) => (
-              <div key={index} className="bg-white p-6 shadow-lg rounded-3xl hover:shadow-2xl transition duration-300">
+              <div key={index} className="bg-white p-6 shadow-lg rounded-3xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
                 <h3 className="text-xl font-bold text-blue-800 mb-2">{item.title}</h3>
                 <p className="text-gray-600 mb-4">{item.description}</p>
               </div>
@@ -75,9 +77,9 @@ function Hero() {
         {/* How Section */}
         <div className="mt-16 p-8 bg-gradient-to-r from-blue-300 via-blue-100 to-purple-200 rounded-3xl shadow-md" id="how">
           <h2 className="text-5xl font-bold mb-4 text-blue-900 text-center">How?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             {howData.map((item, index) => (
-              <div key={index} className="bg-white p-6 shadow-lg rounded-3xl hover:shadow-2xl transition duration-300 animt">
+              <div key={index} className="bg-white p-6 shadow-lg rounded-3xl hover:shadow-2xl transition duration-300 animt transform hover:-translate-y-2">
                 <h3 className="text-xl font-bold text-blue-800 mb-2">{item.title}</h3>
                 <p className="text-gray-600 mb-4">{item.description}</p>
               </div>

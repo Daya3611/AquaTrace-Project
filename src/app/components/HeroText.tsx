@@ -27,7 +27,7 @@ function HeroText() {
           <div className='relative z-10 max-w-6xl mx-auto px-6 py-12'>
           <div className='bg-transparent rounded-lg p-8'>
             <h1 className='text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-6 animate-fadeIn'>
-              Join Us in the <span className='bg-blue-600 text-white rounded-full px-3 py-1 animate-pulse items-center'>fight</span> for the Environment
+              Join Us in the <span className='bg-blue-600 text-white rounded-full px-3 py-1 animate-pulse items-center '>fight</span> for the Environment
             </h1>
             <p className='text-base md:text-lg text-gray-600 mb-8 animate-fadeIn animate-delay-200'>
             The Agricultural Water Footprint Calculator is a vital tool designed to help farmers, policymakers, and researchers assess the water consumption associated with various agricultural practices.
@@ -49,8 +49,8 @@ function HeroText() {
           </div>
         </div>
           </div>
-      <div className=' items-center justify-center hidden lg:flex'>
-          <Image src="/img/hero.png" alt='sdd' width={450} height={400} className='rounded-3xl' />
+      <div className=' items-center justify-center hidden lg:flex '>
+          <Image src="/img/hero.png" alt='sdd' width={450} height={400} className='rounded-3xl transition duration-300 transform hover:-translate-y-2' />
           
       </div>
     </div>
