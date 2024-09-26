@@ -22,7 +22,7 @@ function Section() {
           </div>
           <h3 className="text-xl font-semibold text-gray-700 mb-2">Input the data</h3>
           <p className="text-gray-600">
-            Users provide object descriptions or images. Multilingual text input or image recognition is used.
+            Users provide Multilingual text input  is used.
           </p>
         </div>
 
