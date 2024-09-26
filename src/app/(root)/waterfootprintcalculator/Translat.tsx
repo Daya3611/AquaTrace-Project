@@ -1,9 +1,10 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from 'next/link'
+import React from 'react'
 
-function Translator() {
+function Translat() {
   return (
-    <div className='flex justify-center mt-6 space-x-4'>
+    <div>
+      <div className='flex justify-center mt-6 space-x-4'>
       <Link href='/waterfootprintcalculator/hindi'>
         <button className='px-6 py-3 bg-blue-600 text-white font-semibold rounded-3xl shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all duration-300 transform hover:scale-105'>
           हिन्दी में
@@ -20,7 +21,8 @@ function Translator() {
         </button>
       </Link>
     </div>
-  );
+    </div>
+  )
 }
 
-export default Translator;
+export default Translat

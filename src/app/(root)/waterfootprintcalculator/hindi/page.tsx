@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Bar, BarChart, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import { toast } from "sonner";
 import Link from 'next/link';
-import Translator from '../translator';
+import Translat from '../Translat';
+
 
 
 
@@ -171,7 +172,7 @@ const Page = () => {
     <h2 className='text-3xl font-bold mb-6 text-blue-800 text-center'>Agricultural Water Footprint Calculator</h2>
 
     <div>
-      <Translator/>
+      <Translat/>
     </div>
 
     <form onSubmit={handleSubmit} className='space-y-6'>
