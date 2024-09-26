@@ -56,7 +56,7 @@ function Hero() {
     <div className="pt-9">
       <HeroText />
       <Section />
-      <Features />
+      {/* <Features /> */}
 
       {/* Why and How Section */}
       <div className="mt-16 p-8 bg-white rounded-lg ">
