@@ -34,28 +34,28 @@ function Footer() {
         </li>
 
         <li>
-          <a href='/about' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          <a href='/#why' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
             Why ? 
             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
           </a>
         </li>
 
         <li>
-          <a href='/faq' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          <a href='/#how' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
             How ?
             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
           </a>
         </li>
 
         <li>
-          <a href='/faq' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          <a href='/about' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
             About
             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
           </a>
         </li>
 
         <li>
-          <a href='/faq' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
+          <a href='https://docs.google.com/forms/d/e/1FAIpQLSeUqLRY-XIdW-wFjQSoh4Z6LPlY5qUa2Lll2KZps1m0qgJqtw/viewform' className='relative group text-gray-600 hover:text-blue-700 font-medium'>
             Contact
             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full'></span>
           </a>
