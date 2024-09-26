@@ -167,11 +167,11 @@ const Page = () => {
   };
 
   return (
-    <div className='py-9 rounded-3xl bg-gradient-to-r from-blue-100 to-blue-200'>
+    <div className='py-9 rounded-3xl bg-gradient-to-r from-blue-300 via-green-100 to-purple-200'>
   <div className='max-w-4xl mx-auto mt-[55px] p-6 bg-white shadow-2xl rounded-3xl transition-all hover:shadow-3xl'>
     <h2 className='text-3xl font-bold mb-6 text-blue-800 text-center'>Agricultural Water Footprint Calculator</h2>
 
-    <div>
+    <div className='flex- items-end'>
       <Translat/>
     </div>
 

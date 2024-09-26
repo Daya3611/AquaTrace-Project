@@ -10,7 +10,7 @@ export default function Home() {
     <div className="">
       
       <div className="mt-[65px]">
-      <Hero />
+      <Hero  />
       {/* <Graph />
       <TeamMember /> */}
       </div>

@@ -37,10 +37,10 @@ function HeroText() {
                 className='bg-white text-black hover:bg-blue-200 rounded-full py-6 px-6 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 animate-slideIn animate-delay-300'
                 onClick={toWFC}
               >
-                <p className='py-4 text-md '>Calculate Your Water Footprint</p>
+                <p className='py-4 text-lg '>Calculate Your Water Footprint</p>
               </Button>
               <Button 
-                className='bg-white text-black hover:bg-green-200 rounded-full py-6 px-6 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 animate-slideIn animate-delay-400'
+                className='bg-white text-black hover:bg-green-200 rounded-full text-lg py-6 px-6 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 animate-slideIn animate-delay-400'
                 onClick={Showmssg1}
               >
                 Tell Us About You

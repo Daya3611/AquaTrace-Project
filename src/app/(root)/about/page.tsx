@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import React from 'react'
 
 function page() {
@@ -100,6 +102,13 @@ function page() {
         <br /><br />
         Through tailored water footprint analysis, efficient irrigation practices, improved crop and livestock management, adoption of water-saving technologies, and community collaboration, AquaTrace offers a comprehensive approach to addressing water scarcity in agriculture. Together, we can build a more sustainable future where water resources are protected, and food security is ensured for all.
         </p>
+        <p>
+  <Link href='/faq'>
+    <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+      FAQ Page
+    </button>
+  </Link>
+</p>
 
             </div>
         </div>
@@ -110,27 +119,18 @@ function page() {
     {teamMembers.map((member, index) => (
       <div
         key={index}
-        className="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+        className="bg-gradient-to-b from-blue-100 to-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col items-center justify-center p-6 border border-blue-200"
       >
-        <img
-          src={member.image}
-          alt={`${member.name}`}
-          className="w-full h-56 object-fill"
-        />
-        <div className="p-6 text-center">
-          <h3 className="text-2xl font-bold text-blue-800">{member.name}</h3>
-          <p className="mt-2 text-gray-500 text-md italic">{member.role}</p>
-          
-        </div>
-        {/* <div className="bg-blue-50 py-4">
-          <button className="text-blue-800 font-semibold hover:text-blue-900 transition duration-300">
-            Learn More
-          </button>
+        <h3 className="text-3xl font-bold text-blue-800">{member.name}</h3>
+        <p className="mt-2 text-gray-600 text-md italic">{member.role}</p>
+        {/* <div className="mt-4 bg-blue-600 text-white rounded-full px-4 py-2 shadow hover:bg-blue-700 transition duration-300">
+          <button className="focus:outline-none">Learn More</button>
         </div> */}
       </div>
     ))}
   </div>
 </div>
+
 
 </div>
 

@@ -5,7 +5,7 @@ import React from 'react';
 
 function Section() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
+    <div className="flex flex-col items-center justify-center bg-white px-4 mt-7">
       {/* Heading Section */}
       <div className="text-center mb-12">
         <h3 className="text-lg font-medium text-indigo-600">How It Works</h3>

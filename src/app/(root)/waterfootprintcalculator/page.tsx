@@ -167,7 +167,7 @@ const Page = () => {
   };
 
   return (
-    <div className='py-9 rounded-3xl bg-gradient-to-r from-blue-100 to-blue-200'>
+    <div className='py-9 rounded-3xl bg-gradient-to-r from-blue-300 via-blue-100 to-green-200'>
   <div className='max-w-4xl mx-auto mt-[55px] p-6 bg-white shadow-2xl rounded-3xl transition-all hover:shadow-3xl'>
     
     
@@ -259,7 +259,7 @@ const Page = () => {
         <legend className='font-semibold text-blue-700 mb-2 text-xl'>Water Usage</legend>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <div>
-            <label className='block text-gray-800'>Recyled Water (mm): <span className='text-red-600'>*</span></label>
+            <label className='block text-gray-800'>Recycled Water (mm): <span className='text-red-600'>*</span></label>
             <input type='number' name='greenWater' value={formData.greenWater} onChange={handleChange} className='w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition-all' />
           </div>
           <div>
