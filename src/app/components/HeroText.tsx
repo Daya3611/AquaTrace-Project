@@ -50,7 +50,7 @@ function HeroText() {
         </div>
           </div>
       <div className=' items-center justify-center hidden lg:flex '>
-          <Image src="/img/hero.png" alt='sdd' width={450} height={400} className='rounded-3xl transition duration-300 transform hover:-translate-y-2' />
+          <Image src="/img/hero.png" alt='hero Img' width={450} height={400} className='rounded-3xl transition duration-300 transform hover:-translate-y-2' />
           
       </div>
     </div>
