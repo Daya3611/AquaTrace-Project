@@ -7,7 +7,7 @@ function page() {
     const teamMembers = [
         {
           name: 'Akshatha Jain',
-          role: 'Mentorr',         
+          role: 'Mentor',         
           image: './img/demoF.jpg',
         },
         {
