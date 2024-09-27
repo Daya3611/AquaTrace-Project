@@ -33,7 +33,7 @@ function Section() {
           </div>
           <h3 className="text-xl font-semibold text-gray-700 mb-2">Calculation</h3>
           <p className="text-gray-600">
-            AI interprets the input and matches it with water footprint data. Water footprint is calculated for the specified object.
+             Water footprint is calculated for the specific crop.
           </p>
         </div>
 
