@@ -312,7 +312,7 @@ const Page = () => {
       {/* Chart Section */}
     {chartData.length > 0 && (
       <div className='mt-8'>
-        <h3 className='text-xl font-bold mb-4 text-green-800'>मौसमी जल का उपयोग</h3>
+        {/* <h3 className='text-xl font-bold mb-4 text-green-800'>मौसमी जल का उपयोग</h3>
         <BarChart width={600} height={300} data={chartData}>
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis dataKey='month' />
@@ -322,7 +322,7 @@ const Page = () => {
         </BarChart>
         <p className='text-sm mt-4 italic text-gray-500'>नोट: चार्ट में प्रस्तुत जल उपयोग मूल्य अनुमानित हैं और किसान द्वारा उपलब्ध कराए गए आंकड़ों पर आधारित हैं। पानी का वास्तविक उपयोग अप्रत्याशित मौसम की स्थिति, सिंचाई पद्धतियों में बदलाव और फसल वृद्धि में भिन्नता जैसे अतिरिक्त कारकों के आधार पर भिन्न हो सकता है। इसलिए, इन मूल्यों का उपयोग अनुमान के रूप में किया जाना चाहिए न कि निश्चित मीट्रिक के रूप में।</p>
         <p className='text-sm mt-4 italic text-gray-500'>नोट: जल पदचिह्न की गणना किसान द्वारा उपलब्ध कराए गए इनपुट डेटा पर आधारित है, जिसमें फसल की उपज, पानी का उपयोग और सिंचाई विवरण शामिल हैं। जल पदचिह्न की सटीकता दर्ज किए गए डेटा की सटीकता और पानी के वाष्पीकरण, अपवाह, या फसल-विशिष्ट जल आवश्यकताओं जैसे अन्य प्रभावित करने वाले कारकों के आधार पर भिन्न हो सकती है। ये गणनाएँ एक अनुमान प्रदान करती हैं और इन्हें सटीक माप के बजाय एक दिशानिर्देश के रूप में उपयोग किया जाना चाहिए।</p>
-        
+         */}
         <p>
         <Link href="/relatedvideos">
           <Button className="mt-8 bg-blue-700 rounded-2xl px-6 py-5 transition-transform duration-300 hover:scale-105 hover:bg-blue-800">

@@ -313,7 +313,7 @@ const Page = () => {
       {/* Chart Section */}
     {chartData.length > 0 && (
       <div className='mt-8'>
-        <h3 className='text-xl font-bold mb-4 text-green-800'>हंगामी पाणी वापर</h3>
+        {/* <h3 className='text-xl font-bold mb-4 text-green-800'>हंगामी पाणी वापर</h3>
         <BarChart width={600} height={300} data={chartData}>
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis dataKey='month' />
@@ -323,7 +323,7 @@ const Page = () => {
         </BarChart>
         <p className='text-sm mt-4 italic text-gray-500'>टीप: तक्त्यामध्ये सादर केलेली पाणी वापर मूल्ये अंदाजे आहेत आणि शेतकऱ्याने दिलेल्या डेटावर आधारित आहेत. अप्रत्याशित हवामान, सिंचन पद्धतीतील बदल आणि पिकांच्या वाढीतील तफावत यासारख्या अतिरिक्त घटकांवर अवलंबून वास्तविक पाण्याचा वापर बदलू शकतो. म्हणून, ही मूल्ये अंदाजे म्हणून वापरली पाहिजेत आणि निश्चित मेट्रिक्स म्हणून नव्हे.</p>
         <p className='text-sm mt-4 italic text-gray-500'>टीप: वॉटर फूटप्रिंटची गणना पीक उत्पादन, पाण्याचा वापर आणि सिंचन तपशीलांसह शेतकऱ्याने प्रदान केलेल्या इनपुट डेटावर आधारित आहे. प्रविष्ट केलेल्या डेटाच्या अचूकतेवर आणि पाण्याचे बाष्पीभवन, प्रवाह किंवा पीक-विशिष्ट पाण्याच्या गरजा यांसारख्या इतर प्रभावकारी घटकांवर अवलंबून पाण्याच्या ठशांची अचूकता बदलू शकते. ही गणना अंदाज प्रदान करते आणि अचूक मोजमाप करण्याऐवजी मार्गदर्शक म्हणून वापरली जावी.</p>
-        
+         */}
         <p>
         <Link href="/relatedvideos">
           <Button className="mt-8 bg-blue-700 rounded-2xl px-6 py-5 transition-transform duration-300 hover:scale-105 hover:bg-blue-800">

@@ -314,17 +314,17 @@ const Page = () => {
       {/* Chart Section */}
     {chartData.length > 0 && (
       <div className='mt-8'>
-        <h3 className='text-xl font-bold mb-4 text-green-800'>Seasonal Water Use</h3>
+        {/* <h3 className='text-xl font-bold mb-4 text-green-800'>Seasonal Water Use</h3>
         <BarChart width={600} height={300} data={chartData}>
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis dataKey='month' />
           <YAxis />
           <Tooltip />
           <Bar dataKey='WaterUse' fill='#2e8d23' />
-        </BarChart>
-        <p className='text-sm mt-4 italic text-gray-500'>Note: The water usage values presented in the chart are approximate and based on the data provided by the farmer. Actual water usage may vary depending on additional factors such as unforeseen weather conditions, changes in irrigation practices, and variations in crop growth. Therefore, these values should be used as estimates and not definitive metrics.</p>
+        </BarChart> */}
+        {/* <p className='text-sm mt-4 italic text-gray-500'>Note: The water usage values presented in the chart are approximate and based on the data provided by the farmer. Actual water usage may vary depending on additional factors such as unforeseen weather conditions, changes in irrigation practices, and variations in crop growth. Therefore, these values should be used as estimates and not definitive metrics.</p>
         <p className='text-sm mt-4 italic text-gray-500'>Note: The calculation of the water footprint is based on the input data provided by the farmer, including crop yield, water usage, and irrigation details. The accuracy of the water footprint may vary depending on the precision of the data entered and other influencing factors such as water evaporation, runoff, or crop-specific water requirements. These calculations provide an estimate and should be used as a guideline rather than an exact measurement.</p>
-        
+         */}
         <p>
         <Link href="/relatedvideos">
           <Button className="mt-8 bg-blue-700 rounded-2xl px-6 py-5 transition-transform duration-300 hover:scale-105 hover:bg-blue-800">
